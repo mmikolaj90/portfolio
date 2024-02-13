@@ -1,0 +1,52 @@
+body {
+  &.loading {
+    > *:not(.loader) {
+      overflow: hidden;
+      pointer-events: none;
+      opacity: 0;
+    }
+  }
+}
+
+.loader {
+  // outline: 1px solid green;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background: var(--background);
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 1;
+  z-index: -1;
+
+  transition: transform 1s cubic-bezier(1, 0, 0.3, 1);
+  transform: translateY(100%);
+
+  // opacity: 1;
+  z-index: 10000;
+
+  flex-direction: column;
+
+  font-size: .75rem;
+
+  &__text {
+    margin-top: -2em;
+    font-size: .95em;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+
+  #logo {
+    width: 8em;
+  }
+}
+
+.loading {
+    .loader {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}

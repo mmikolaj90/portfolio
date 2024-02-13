@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;700&family=Chakra+Petch:wght@300;400;600;700&display=swap");
+
+body {
+  font-family: "Archivo", sans-serif;
+  color: rgb(var(--white));
+  line-height: 1.7;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Chakra Petch", sans-serif;
+  margin: 0 0 0.5rem 0;
+  color: rgb(var(--white));
+  line-height: 1.2;
+  // letter-spacing: 0.0625rem;
+}
+// h1 {
+//   font-size: 3.052em;
+// }
+// h2 {
+//   font-size: 2.441em;
+// }
+// h3 {
+//   font-size: 1.953em;
+// }
+// h4 {
+//   font-size: 1.563em;
+// }
+// h5 {
+//   font-size: 1.25em;
+// }
+.h6 {
+  font-size: .875em;
+  letter-spacing: .14px;
+  font-weight: 600;
+}
+
+strong,
+b {
+  font-weight: 700;
+}
+a {
+  // cursor: none;
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--accent);
+}
+p, a {
+  margin: 0;
+  line-height: 1.5;
+  font-weight: 300;
+  font-size: 14px;
+  letter-spacing: .38px;
+}
+
+.display {
+  &-1 {
+    font-size: 3.75rem;
+    font-weight: 300;
+    line-height: 1.3;
+  }
+
+  &-2 {
+    font-size: 3.125rem;
+    font-weight: 400;
+    line-height: 1.1;
+  }
+}
+
+.header__link {
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 0.875em;
+  letter-spacing: 0.14px;
+  font-weight: 400;
+  position: relative;
+  .active {
+    /* font-weight: bolder; */
+    /* text-decoration: underline; */
+  }
+}

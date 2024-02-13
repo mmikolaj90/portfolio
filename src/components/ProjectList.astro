@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ProjectThumbnail from "./ProjectThumbnail.astro";
+
+interface Props {
+  posts: CollectionEntry<"blog">[];
+}
+
+const { posts } = Astro.props;
+---
+
+<div class="project-list">
+  {
+    posts.map((post, index) => {
+      return (
+        <div
+          class:list={["conjoined-height-grid__element project-list__item"]}
+          data-slide
+        >
+          <ProjectThumbnail
+            slug={post.slug}
+            title={post.data.title}
+            image={{
+              src: post.data.heroImage ?? "placeholder",
+              alt: "test",
+              width: 720,
+              height: 720,
+              loading: "eager",
+            }}
+            video={{
+              src: post.data.heroVideo,
+            }}
+            date={post.data.pubDate}
+            description={post.data.description}
+          />
+        </div>
+      );
+    })
+  }
+</div>

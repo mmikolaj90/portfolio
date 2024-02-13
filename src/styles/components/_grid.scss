@@ -1,0 +1,46 @@
+@import "../abstract/_breakpoints.scss";
+
+.hero-image {
+  position: relative;
+  // &::after {
+  //   content: "";
+  //   inset: 0 0 100% 0;
+  //   // border-top: 0.5px solid var(--accent);
+  //   position: absolute;
+  //   z-index: 1;
+  // }
+}
+
+.blog__grid {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+
+  & > * {
+    width: 100%;
+
+    @include bp(medium) {
+      width: 33.333%;
+    }
+
+    position: relative;
+
+    // &::before,
+    // &::after {
+    //   content: "";
+    //   position: absolute;
+    //   pointer-events: none;
+
+    //   // border: 1px solid var(--accent);
+    //   inset: -0.5px;
+    // }
+
+    &:first-child {
+      padding: 10%;
+
+      @include bp(medium) {
+        width: 66.666%;
+      }
+    }
+  }
+}

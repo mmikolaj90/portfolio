@@ -1,0 +1,11 @@
+---
+
+const { title, description, pubDate, updatedDate, heroImage, name } =
+  Astro.props;
+
+const { slug } = Astro.params;
+---
+
+<div class="blog__grid">
+  <slot />
+</div>

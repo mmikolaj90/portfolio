@@ -1,0 +1,26 @@
+---
+import ImageVideoSwitch from "./ImageVideoSwitch.astro";
+
+const { image, id, video, noEvents } = Astro.props;
+---
+
+<div class="hero-image">
+  <a href="/" class="hero__close">
+    <div
+      id="close"
+      data-lottie-data={JSON.stringify({
+        id: "close",
+        src: "/assets/animations/close.json",
+        autoplay: false,
+        player: "light",
+        loop: false,
+      })}
+    >
+    </div>
+  </a>
+  <ImageVideoSwitch
+    video={video}
+    image={{ ...image, width: 1920, height: 1000, loading: "eager" }}
+    noEvents={!video?.src}
+  />
+</div>

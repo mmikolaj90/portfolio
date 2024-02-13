@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets";
+import FormattedDate from "../components/FormattedDate.astro";
+import ImageVideoSwitch from "../components/ImageVideoSwitch.astro";
+
+interface ThumbnailImage {
+  src: string;
+  alt?: string;
+  width: number;
+  height: number;
+}
+
+interface ThubmnailVideo {
+  src?: string;
+}
+
+interface Props {
+  slug: string;
+  image: ThumbnailImage;
+  title: string;
+  date: Date;
+  description: string;
+  video?: ThubmnailVideo;
+}
+
+const { slug, image, title, date, description, video } = Astro.props;
+---
+
+<a href={`/blog/${slug}`} class="project-thumbnail">
+  <div class="project-thumbnail__body" style="opacity: 0">
+    <h3 class="project-thumbnail__title display-2">{title}</h3>
+    <div class="project-thumbnail__separator"></div>
+    <div class="project-thumbnail__date">
+      <FormattedDate date={date} />
+    </div>
+    <div class="project-thumbnail__description">{description}</div>
+  </div>
+  <div class="project-thumbnail__wrapper">
+    <ImageVideoSwitch video={video} image={{ ...image, class: "square" }} />
+  </div>
+</a>

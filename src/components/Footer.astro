@@ -1,0 +1,23 @@
+---
+import { SOCIAL_LINKS } from "../consts";
+---
+
+<footer>
+  <!-- &copy; {today.getFullYear()}&nbsp;{SITE_OWNER}. All rights reserved. -->
+  <div class="social-links">
+    {
+      SOCIAL_LINKS.map((link) => (
+        <a
+          href="google.com"
+          target="_blank"
+          title={link.name}
+          class="social__link"
+        >
+          <span class="sr-only">{link.alt}</span>
+          <Fragment set:html={link.icon} />
+        </a>
+      ))
+    }
+  </div>
+</footer>
+

@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  date: string;
+  text: string;
+  index?: number;
+}
+
+const { title, date, text, index } = Astro.props;
+---
+
+<div class="head__wrapper" data-slide style={`--timing-offset: ${index || 0};`}>
+  <div class="head">
+    <h1 class="title display-1">
+      {title}
+    </h1>
+    <div class="date">{date}</div>
+    <p class="text">{text}</p>
+  </div>
+</div>
+

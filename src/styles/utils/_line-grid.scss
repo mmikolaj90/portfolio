@@ -1,0 +1,73 @@
+// .line-grid {
+//     position: relative;
+
+//     &::after,
+//     &::before {
+//         content: "";
+//         position: absolute;
+//         inset: 0;
+//         outline: 1px solid red;
+//         z-index: 1;
+//     }
+// }
+
+%test {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #fff;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.line {
+  position: relative;
+
+  &.project-list__item {
+    &::before,
+    &::after {
+      transition-property: width, height;
+      transition-duration: 0.2s;
+      transition-timing-function: ease-in-out;
+    }
+
+    &:nth-child(3n + 1) {
+      &::before {
+        z-index: 100;
+        @extend %test;
+        height: 1px;
+        inset: 0;
+        top: 100%;
+        width: 100vw;
+        // width: 1px;
+        // transition: transform;
+
+        // transform: scaleX(100vw);
+
+        // .entering & {
+        //   width: 0;
+        //   // background-color: red !important;
+        // }
+      }
+    }
+
+    &:nth-child(1),
+    &:nth-child(2) {
+      &::after {
+        @extend %test;
+        width: 1px;
+        inset: 0;
+        left: 100%;
+        // current height * count or rows per breakpoint
+        height: calc(100% * 2);
+
+        // .entering & {
+          // height: 0;
+          // background-color: red !important;
+        // }
+
+        // transition: height;
+      }
+    }
+  }
+}

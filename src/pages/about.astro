@@ -1,0 +1,85 @@
+---
+import Footer from "../components/Footer.astro";
+import HeroImage from "../components/HeroImage.astro";
+import Layout from "../layouts/Layout.astro";
+import { CONTACT } from "../consts";
+
+import { myFade } from "../components/interactions/transitions/fade";
+import { slide } from "astro:transitions";
+
+const title = "";
+const description = "";
+const image = {
+  src: "/assets/images/mikolaj_madejski.jpg",
+  alt: "",
+  height: "1000",
+  class: 'darken'
+};
+---
+
+<Layout
+  description="I’m Mikołaj Madejski. Passionate creator of media. I do designs."
+>
+  <main data-barba="container" data-barba-namespace="opacity-transition">
+    <article>
+      <div class=" hero-image__wrapper line line-top line-bottom--after" data-slide style="--timing-offset: 0;">
+        <div class="hero-image__container conjoined-height-grid__element">
+          <HeroImage image={image} noEvents />
+        </div>
+        <div class="hero-image__deco">
+          <div class="hero-image__text hero-image__hi display-1">Hi!</div>
+          <div class="hero-image__content visible-large">
+            <h2 class="hero-image__title h5">WHO I AM?</h2>
+            <p class="hero-image__text">
+              I’m Mikołaj Madejski. Passionate creator of media. I do designs.
+            </p>
+          </div>
+          <div class="hero-image__info">
+            <a
+              href={`tel:${CONTACT.phone.replaceAll(" ", "")}`}
+              class="info__phone">{CONTACT.phone}</a
+            >
+            <a href={`mailto:${CONTACT.mail}`} class="info__mail"
+              >{CONTACT.mail}</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="prose">
+        <div class="hero-image__content visible-small" data-slide style="--timing-offset: 1;">
+          <h2 class="hero-image__title h5">WHO I AM?</h2>
+          <p class="hero-image__text">
+            I’m Mikołaj Madejski. Passionate creator of media. I do designs.
+          </p>
+        </div>
+
+        <div data-slide style="--timing-offset: 2;">
+          <h2 class="h5">LET’S DO THE STUFF</h2>
+          <p>
+            Inspired by Toy Story in childhood, I have started exploring design
+            softwares for my own.
+            <br />
+            I’m Apple fun. I know that the hardest thing is to make design simple.
+            But the process of designing brings so much fun!
+          </p>
+        </div>
+
+        <div class="footer__wrapper" data-slide style="--timing-offset: 3;">
+          <Footer />
+        </div>
+
+        <hr data-slide style="--timing-offset: 3;" />
+
+        <div data-slide style="--timing-offset: 4;">
+          <h2 class="h5">SOFTWARE</h2>
+          <p>
+            Blender, Unreal Engine, Fusion 360, RizomUV, Substance Painter,
+            Photoshop, Illustrator, After Effects, Apple Motion, Final Cut Pro,
+            Figma
+          </p>
+        </div>
+      </div>
+    </article>
+  </main>
+</Layout>
+

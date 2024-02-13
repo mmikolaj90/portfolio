@@ -1,0 +1,115 @@
+// PROJECT thubnail
+$transition-time: 500ms;
+$transition-timing: ease-in-out;
+.project-thumbnail {
+  position: relative;
+  display: block;
+  // outline: 0.5px solid #fff;
+  // margin: 0.5px;
+  overflow: hidden;
+
+  &:hover,
+  &:focus-visible {
+    .project-thumbnail {
+      &__body {
+        opacity: 1 !important;
+      }
+
+      &__title {
+        transform: scale(1);
+      }
+
+      &__date {
+        transform: translateY(0);
+      }
+
+      &__description {
+        transform: translateY(0);
+      }
+
+      &__separator {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.project-thumbnail {
+  position: relative;
+
+  &__wrapper {
+    aspect-ratio: 1/1;
+    // opacity: .1;
+    // z-index: 1;
+    > * {
+      height: 100%;
+    }
+  }
+  &__body {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    pointer-events: none;
+
+    max-width: 80%;
+    margin: auto;
+    z-index: 11;
+
+    @media (any-hover: hover) {
+      opacity: 1;
+    }
+
+    transition: opacity $transition-time $transition-timing;
+  }
+  &__title {
+    // outline: 1px solid blue;
+    @media (any-hover: hover) {
+      transform: scale(0.9);
+      transition: transform $transition-time $transition-timing;
+    }
+    // font-size: 2rem;
+    margin-bottom: 1.2rem;
+
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  &__date {
+    // outline: 1px solid blue;
+    margin-bottom: 10px;
+    @media (any-hover: hover) {
+      transform: translateY(20px);
+      transition: transform $transition-time $transition-timing;
+    }
+  }
+  &__description {
+    // outline: 1px solid blue;
+    @media (any-hover: hover) {
+      transform: translateY(20px);
+      transition: transform $transition-time $transition-timing;
+    }
+
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  &__separator {
+    height: 1px;
+    width: 50px;
+    background: currentColor;
+    margin-bottom: 1.75rem;
+
+    transform: scale(0);
+    @media (any-hover: hover) {
+      transition: transform $transition-time $transition-timing;
+    }
+  }
+}

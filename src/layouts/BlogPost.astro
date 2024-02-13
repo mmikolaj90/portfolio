@@ -1,0 +1,43 @@
+---
+// import type { CollectionEntry } from "astro:content";
+import HeroImage from "../components/HeroImage.astro";
+import Layout from "./Layout.astro";
+import { SITE_TITLE } from "../consts";
+// import ImageVideoSwitch from "../components/ImageVideoSwitch.astro";
+
+const { title, description, pubDate, updatedDate, heroImage, heroVideo, name } =
+  Astro.props;
+
+const { slug } = Astro.params;
+---
+
+<Layout title={`${SITE_TITLE}: ${title}`} description={description}>
+  <main data-barba="container" data-barba-namespace="opacity-transition">
+    <article>
+      {
+        heroImage && (
+          <div
+            class="hero-image__container conjoined-height-grid__element"
+            data-slide
+            style="--timing-offset: 0;"
+          >
+            <HeroImage
+              image={{
+                src: heroImage,
+                alt: "no alt",
+                height: 1000
+              }}
+              video={{
+                src: heroVideo,
+              }}
+              id={slug}
+            />
+          </div>
+        )
+      }
+      <div data-slide style={`--timing-offset: 0;`} class="">
+        <slot />
+      </div>
+    </article>
+  </main>
+</Layout>

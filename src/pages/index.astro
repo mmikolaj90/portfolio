@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+import ProjectList from "../components/ProjectList.astro";
+import Layout from "../layouts/Layout.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+---
+
+<Layout
+  description="I’m Mikołaj Madejski. Passionate creator of media. I do designs."
+>
+  <main data-barba="container" data-barba-namespace="opacity-transition">
+    <article>
+      <section>
+        <ProjectList posts={posts} />
+      </section>
+    </article>
+  </main>
+</Layout>
+
+<script>
+
+</script>

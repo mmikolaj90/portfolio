@@ -1,0 +1,84 @@
+---
+import { Image } from "astro:assets";
+
+interface ThumbnailImage {
+  src: string;
+  alt?: string;
+  width: number;
+  height: number;
+  class?: string;
+}
+
+interface ThubmnailVideo {
+  src?: string;
+  type?: string;
+}
+
+interface Props {
+  image: ThumbnailImage;
+  video?: ThubmnailVideo;
+  noEvents?: boolean;
+}
+
+const { image, video, noEvents } = Astro.props;
+---
+
+<!-- class="image-video-switch" -->
+<div class:list={["image-video-switch", { "events-none": noEvents }]}>
+  {
+    video?.src && (
+      <video
+        class="image-video-switch__video"
+        playsinline
+        webkit-playsinline
+        muted
+        loop
+      >
+        <source type="video/mp4" {...video} />
+      </video>
+    )
+  }
+
+  <Image
+    alt="no alt"
+    {...image}
+    class:list={image.class}
+    class="image-video-switch__image"
+  />
+
+  <script>
+    // import barba from "@barba/core";
+
+    // const init = () => {
+    //   const imageVideos = Array.from(
+    //     document.querySelectorAll(".image-video-switch")
+    //   ) as HTMLLinkElement[];
+
+    //   if (!imageVideos.length) return;
+
+    //   const vietVideoFromTile = (imageVideoElement: HTMLLinkElement) =>
+    //     imageVideoElement.querySelector("video");
+
+    //   imageVideos.forEach((imageVideo) => {
+    //     const video = vietVideoFromTile(imageVideo);
+
+    //     if (!video) return;
+
+    //     imageVideo?.addEventListener("mouseenter", () => {
+    //       video.play();
+    //     });
+
+    //     imageVideo?.addEventListener("mouseleave", () => {
+    //       video.pause();
+    //       video.currentTime = 0;
+    //     });
+    //   });
+    // };
+
+    // init();
+
+    // barba.hooks.after(() => {
+    //   init();
+    // });
+  </script>
+</div>

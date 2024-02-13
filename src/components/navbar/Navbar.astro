@@ -1,0 +1,104 @@
+---
+import HeaderLink from "../HeaderLink.astro";
+import { SITE_TITLE } from "../../consts";
+import Logo from "../ui/Logo.astro";
+// import LottieAnimation from "astro-integration-lottie/Lottie.astro";
+---
+
+<header>
+  <nav>
+    <HeaderLink href="/">{SITE_TITLE}</HeaderLink>
+    <div class="header__logo">
+      <a href="/">
+        <Logo class="test" />
+      </a>
+    </div>
+    <div class="internal-links">
+      <HeaderLink href="/about">
+        <span class="hidden"> info</span>
+        <div class="f">
+          <div
+            id="info"
+            data-lottie-data={JSON.stringify({
+              id: "info",
+              src: "/assets/animations/info.json",
+              autoplay: false,
+              player: "light",
+              loop: false,
+            })}
+          >
+          </div>
+        </div>
+      </HeaderLink>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .f {
+    width: 3.6em;
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    @media (min-width: 720px) {
+      width: 41px;
+      top: 1px;
+      right: 9px;
+    }
+  }
+</style>
+
+<script>
+  import Lottie from "lottie-web";
+
+  const infoAnimationFrames = {
+    mouseEnter: 0,
+    click: 30,
+    mouseLeave: 60,
+  };
+
+  const info = document.getElementById("info")!;
+  const infoConfig = JSON.parse(info?.getAttribute("data-lottie-data")!);
+
+  const animation = Lottie.loadAnimation({
+    container: info, // the dom element that will contain the animation
+    renderer: "svg",
+    loop: infoConfig.loop ?? false,
+    autoplay: infoConfig.loop ?? false,
+    path: infoConfig.src, // the path to the animation json
+    rendererSettings: {
+      viewBoxOnly: true,
+    },
+  });
+
+  const setupLottieAnimations = () => {
+    if (animation) {
+      let clicked = false;
+
+      animation.wrapper.addEventListener("mouseenter", () => {
+        animation.playSegments(
+          [infoAnimationFrames.mouseLeave, infoAnimationFrames.click - 1],
+          true
+        );
+      });
+
+      animation.wrapper.addEventListener("click", () => {
+        animation.playSegments(
+          [infoAnimationFrames.click, infoAnimationFrames.mouseLeave - 1],
+          true
+        );
+
+        clicked = true;
+      });
+
+      animation.wrapper.addEventListener("mouseleave", () => {
+        if (!clicked) {
+          animation.playSegments([60, 86], true);
+        }
+        clicked = false;
+      });
+    }
+  };
+
+  setupLottieAnimations();
+</script>

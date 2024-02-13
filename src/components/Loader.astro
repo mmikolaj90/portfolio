@@ -1,0 +1,45 @@
+---
+
+---
+
+<div id="loader" class="loader">
+  <div
+    id="logo"
+    data-lottie-data={JSON.stringify({
+      id: "logo",
+      src: "/assets/animations/logo.json",
+      autoplay: true,
+      player: "light",
+      loop: true,
+    })}
+  >
+  </div>
+  <h6 class="loader__text">loading</h6>
+</div>
+
+<script>
+  import Lottie from "lottie-web";
+  //   document.body.classList.add("loading");
+
+  const animInit = () => {
+    const logo = document.getElementById("logo")!;
+    const logoConfig = JSON.parse(logo?.getAttribute("data-lottie-data")!);
+
+    Lottie.loadAnimation({
+      container: logo, // the dom element that will contain the animation
+      renderer: "svg",
+      loop: logoConfig.loop ?? false,
+      autoplay: logoConfig.autoplay ?? false,
+      path: logoConfig.src, // the path to the animation json
+      rendererSettings: {
+        viewBoxOnly: true,
+      },
+    });
+  };
+
+  animInit();
+
+  setTimeout(() => {
+    document.body.classList.remove("loading");
+  }, 1500);
+</script>
