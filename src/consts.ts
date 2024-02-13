@@ -3,7 +3,7 @@
 import ArtStation from "./components/ui/icons/ArtStation.svg?raw";
 import LinkedIn from "./components/ui/icons/LinkedIn.svg?raw";
 
-export const SITE_URL = "https://main--celadon-taiyaki-36a330.netlify.app/";
+export const SITE_URL = "https://madejskimedia.com";
 
 export const SITE_TITLE = "Madejski Media";
 export const SITE_DESCRIPTION = "Welcome to my website!";
