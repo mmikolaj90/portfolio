@@ -1,0 +1,8 @@
+.base-blog-head__tile {
+  padding: 10%;
+
+  @include bp(medium) {
+    align-self: center;
+    padding: 0 10%;
+  }
+}

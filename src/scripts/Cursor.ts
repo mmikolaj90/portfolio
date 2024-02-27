@@ -53,8 +53,6 @@ const handleCursor = () => {
   window.addEventListener("scroll", () => {
     initCursor();
     windowScrollOffsetY = window.scrollY;
-
-    console.log(cursorObject.top, windowScrollOffsetY);
   });
 
   window.addEventListener("click", (e) => {

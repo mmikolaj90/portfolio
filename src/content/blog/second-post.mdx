@@ -3,12 +3,13 @@ title: "Second post"
 layout: "../../layouts/BaseBlogPostGrid.astro"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 22 2022"
-heroImage: "/assets/posts/second/image/main_1.jpg"
-heroVideo: "/assets/posts/second/video/main.mp4"
+heroImage: "@blogAssets/second-post/main_1.jpg"
+heroVideo: "/assets/blog/second-post/main.mp4"
 ---
 
-import BaseBlogImage from "/src/components/BaseBlogImage.astro";
 import BaseBlogHeadTile from "/src/components/BaseBlogHeadTile.astro";
+import BaseBlogImage from "/src/components/BaseBlogImage.astro";
+import BaseBlogVideo from "/src/components/BaseBlogVideo.astro";
 
 <BaseBlogHeadTile
   index="1"
@@ -17,8 +18,16 @@ import BaseBlogHeadTile from "/src/components/BaseBlogHeadTile.astro";
   text="There are many variations of passages of Lorem Ipsum available, but the
     majority have suffered alteration in some form, by injected humour, or
     randomised words which don't look even slightly believable."
+  gridPosition="1/1/1/3"
 />
 
-<BaseBlogImage index="1" src="/assets/posts/second/image/01.jpg" alt="test" />
-<BaseBlogImage index="2" src="/assets/posts/second/image/05.jpg" alt="test" />
-<BaseBlogImage index="2" src="/assets/posts/second/image/06.jpg" alt="test" />
+<BaseBlogImage
+  image={"/assets/blog/second-post/main_1.jpg"}
+  index={1}
+  gridPosition="1/3/1/3"
+/>
+<BaseBlogVideo
+  src={"/assets/blog/second-post/main.mp4"}
+  index={1}
+  gridPosition="2/1/2/2"
+/>

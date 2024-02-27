@@ -1,0 +1,11 @@
+---
+export interface Props {
+  index?: number;
+}
+
+const { index } = Astro.props;
+---
+
+<div class="blog__media" data-slide style={`--timing-offset: ${index || 0};`}>
+  <slot />
+</div>

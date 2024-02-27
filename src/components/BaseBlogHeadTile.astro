@@ -1,21 +1,25 @@
 ---
-interface Props {
+import type { Props as BaseBlogGridTileProps } from "./BaseBlogGridTile.astro";
+import BaseBlogGridTile from "./BaseBlogGridTile.astro";
+
+interface Props extends BaseBlogGridTileProps {
   title: string;
   date: string;
   text: string;
   index?: number;
 }
 
-const { title, date, text, index } = Astro.props;
+const { gridPosition, title, date, text, index } = Astro.props;
 ---
 
-<div class="head__wrapper" data-slide style={`--timing-offset: ${index || 0};`}>
-  <div class="head">
-    <h1 class="title display-1">
-      {title}
-    </h1>
-    <div class="date">{date}</div>
-    <p class="text">{text}</p>
+<BaseBlogGridTile gridPosition={gridPosition} index={index}>
+  <div class="base-blog-head__tile">
+    <div class="head">
+      <h1 class="title display-1">
+        {title}
+      </h1>
+      <div class="date">{date}</div>
+      <p class="text">{text}</p>
+    </div>
   </div>
-</div>
-
+</BaseBlogGridTile>

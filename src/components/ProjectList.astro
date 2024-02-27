@@ -20,13 +20,7 @@ const { posts } = Astro.props;
           <ProjectThumbnail
             slug={post.slug}
             title={post.data.title}
-            image={{
-              src: post.data.heroImage ?? "placeholder",
-              alt: "test",
-              width: 720,
-              height: 720,
-              loading: "eager",
-            }}
+            image={post.data.heroImage}
             video={{
               src: post.data.heroVideo,
             }}

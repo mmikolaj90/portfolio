@@ -3,26 +3,28 @@ import Footer from "../components/Footer.astro";
 import HeroImage from "../components/HeroImage.astro";
 import Layout from "../layouts/Layout.astro";
 import { CONTACT } from "../consts";
+import AboutImage from "../assets/mikolaj_madejski.jpg";
 
-import { myFade } from "../components/interactions/transitions/fade";
-import { slide } from "astro:transitions";
-
-const title = "";
-const description = "";
+const description =
+  "I’m Mikołaj Madejski. Passionate creator of media. I do designs.";
 const image = {
-  src: "/assets/images/mikolaj_madejski.jpg",
+  src: AboutImage,
   alt: "",
   height: "1000",
-  class: 'darken'
+  class: "darken",
 };
+
+const currentYear = new Date().getFullYear();
 ---
 
-<Layout
-  description="I’m Mikołaj Madejski. Passionate creator of media. I do designs."
->
+<Layout description={description}>
   <main data-barba="container" data-barba-namespace="opacity-transition">
     <article>
-      <div class=" hero-image__wrapper line line-top line-bottom--after" data-slide style="--timing-offset: 0;">
+      <div
+        class="hero-image__wrapper line line-top line-bottom--after"
+        data-slide
+        style="--timing-offset: 0;"
+      >
         <div class="hero-image__container conjoined-height-grid__element">
           <HeroImage image={image} noEvents />
         </div>
@@ -31,7 +33,7 @@ const image = {
           <div class="hero-image__content visible-large">
             <h2 class="hero-image__title h5">WHO I AM?</h2>
             <p class="hero-image__text">
-              I’m Mikołaj Madejski. Passionate creator of media. I do designs.
+              {description}
             </p>
           </div>
           <div class="hero-image__info">
@@ -46,7 +48,11 @@ const image = {
         </div>
       </div>
       <div class="prose">
-        <div class="hero-image__content visible-small" data-slide style="--timing-offset: 1;">
+        <div
+          class="hero-image__content visible-small"
+          data-slide
+          style="--timing-offset: 1;"
+        >
           <h2 class="hero-image__title h5">WHO I AM?</h2>
           <p class="hero-image__text">
             I’m Mikołaj Madejski. Passionate creator of media. I do designs.
@@ -77,9 +83,13 @@ const image = {
             Photoshop, Illustrator, After Effects, Apple Motion, Final Cut Pro,
             Figma
           </p>
+          <br />
+          <br />
+          <small>
+            Copyright &copy; {currentYear} MadejskiMedia. All Rights Reserved
+          </small>
         </div>
       </div>
     </article>
   </main>
 </Layout>
-

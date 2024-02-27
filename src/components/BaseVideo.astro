@@ -1,0 +1,18 @@
+---
+export interface Props extends HTMLVideoElement {
+  type?: string;
+  class?: string;
+}
+
+const {
+  src,
+  title = "Video title",
+  class: className,
+  playsinline = true,
+  webkitPlaysinline = true,
+  muted = true,
+  loop = true,
+}: Props = Astro.props;
+---
+
+<video class={className} {...Astro.props}></video>

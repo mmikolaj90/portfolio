@@ -1,0 +1,15 @@
+---
+import BaseVideo, { Props as VideoProps } from "./BaseVideo.astro";
+import BaseBlogGridTile, {
+  Props as BaseBlogGridTileProps,
+} from "./BaseBlogGridTile.astro";
+
+interface Props extends BaseBlogGridTileProps, VideoProps {
+  index?: number;
+}
+
+const { gridPosition, index, ...rest } = Astro.props;
+---
+<BaseBlogGridTile gridPosition={gridPosition} index={index}>
+  <BaseVideo {...rest} muted loop />
+</BaseBlogGridTile>

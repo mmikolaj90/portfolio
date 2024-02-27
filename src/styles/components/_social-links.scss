@@ -1,0 +1,23 @@
+.social-links {
+  display: flex;
+  gap: 26px;
+  line-height: 1;
+}
+
+.social-links {
+  svg {
+    line-height: 1;
+    width: 40px;
+    height: auto;
+  }
+}
+
+.social-links a {
+  text-decoration: none;
+  color: rgb(var(--gray));
+  line-height: 1;
+}
+
+.social-links a:hover {
+  color: rgb(var(--gray-dark));
+}

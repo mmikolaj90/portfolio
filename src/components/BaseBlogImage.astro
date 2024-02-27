@@ -1,16 +1,16 @@
 ---
+import type { Props as BaseBlogGridTileProps } from "./BaseBlogGridTile.astro";
+import BaseBlogGridTile from "./BaseBlogGridTile.astro";
+import { Image } from "astro:assets";
 
-interface Props {
-  src: string;
-  alt: string;
-  index?: number;
+interface Props extends BaseBlogGridTileProps {
+  image?: unknown;
+  alt?: string;
 }
 
-const { alt, src, index } = Astro.props;
+const { gridPosition, alt, image, index } = Astro.props;
 ---
 
-<div class="img__wrapper-wrapper project-img" data-slide style={`--timing-offset: ${index || 0};`}>
-  <div class="img__wrapper">
-    <img src={src} alt={alt} />
-  </div>
-</div>
+<BaseBlogGridTile gridPosition={gridPosition} index={index}>
+  <Image src={image} alt={alt ?? ""} width={500} height={500} />
+</BaseBlogGridTile>
