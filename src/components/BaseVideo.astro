@@ -15,4 +15,13 @@ const {
 }: Props = Astro.props;
 ---
 
-<video class={className} {...Astro.props}></video>
+<video
+  class={className}
+  muted={muted}
+  loop={loop}
+  playsinline={playsinline}
+  src={src}
+  title={title}
+  class={className}
+  webkitPlaysinline={webkitPlaysinline}
+  {...Astro.props}></video>

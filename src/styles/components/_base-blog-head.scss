@@ -1,8 +1,13 @@
 .base-blog-head__tile {
   padding: 10%;
+  width: 100%;
 
   @include bp(medium) {
     align-self: center;
-    padding: 0 10%;
+    padding: 15%;
+  }
+
+  .text {
+    max-width: 28.75rem;
   }
 }

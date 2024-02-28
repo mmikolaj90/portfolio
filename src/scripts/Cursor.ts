@@ -50,10 +50,10 @@ const handleCursor = () => {
 
   window.addEventListener("mousemove", updateCursor);
 
-  window.addEventListener("scroll", () => {
-    initCursor();
-    windowScrollOffsetY = window.scrollY;
-  });
+  // window.addEventListener("scroll", () => {
+  //   initCursor();
+  //   windowScrollOffsetY = window.scrollY;
+  // });
 
   window.addEventListener("click", (e) => {
     zeroWindowScrollOffsetY();

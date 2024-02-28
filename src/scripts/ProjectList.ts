@@ -1,4 +1,5 @@
 import { debounce } from "./utils";
+import { registerObserver } from "./utils/intersectionObserver";
 
 export default () => {
   const items: HTMLDivElement[] = Array.from(
@@ -19,11 +20,27 @@ export default () => {
     return 1;
   };
 
+  const cb = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      const target = entry.target as HTMLDivElement;
+      if (entry.isIntersecting) {
+        target.dataset.visible = "true";
+      } else {
+        target.dataset.visible = "false";
+      }
+    });
+  };
+
   const init = () => {
     let row = -1;
     let itemsPerRow = getItemsPerRow();
 
+    const observer = registerObserver(cb, {
+      threshold: .55
+    });
+
     items.forEach((item, index) => {
+      observer.observe(item);
       const inRow = index % itemsPerRow;
 
       if (inRow < 1) {

@@ -7,9 +7,16 @@ export interface Props extends BaseBlogMediaProps {
 }
 
 const { gridPosition = "1 / 1 / 1 / 1", index = 0 } = Astro.props;
+
+const [rowStart, columnStart, rowEnd, columnEnd] = gridPosition
+  .split("/")
+  .map(Number);
 ---
 
-<div class="blog__grid-tile" style={`--grid-position: ${gridPosition}`}>
+<div
+  class="blog__grid-tile"
+  style={`--grid-position: ${gridPosition}; --aspect-ratio: ${columnEnd - columnStart || 1}/${(rowEnd - rowStart) || 1}`}
+>
   <BaseBlogMedia index={index}>
     <slot />
   </BaseBlogMedia>

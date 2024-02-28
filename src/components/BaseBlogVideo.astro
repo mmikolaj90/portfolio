@@ -11,5 +11,5 @@ interface Props extends BaseBlogGridTileProps, VideoProps {
 const { gridPosition, index, ...rest } = Astro.props;
 ---
 <BaseBlogGridTile gridPosition={gridPosition} index={index}>
-  <BaseVideo {...rest} muted loop />
+  <BaseVideo {...rest} muted loop data-play-on-visible />
 </BaseBlogGridTile>

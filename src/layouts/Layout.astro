@@ -24,6 +24,7 @@ const { title = SITE_TITLE, description, image = AboutImage } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg" />
+    <link rel="icon" href="/path/to/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Font preloads -->
@@ -71,7 +72,7 @@ const { title = SITE_TITLE, description, image = AboutImage } = Astro.props;
       import useImageVideoSwitch from "../scripts/ImageVideoSwitch";
       import useHeroImage from "../scripts/HeroImage";
       import useProjectList from "../scripts/ProjectList";
-      import { registerObserver } from "../scripts/utils/playOnVisible";
+      import { playOnVisible } from "../scripts/utils/playOnVisible";
 
       const {
         barba,
@@ -100,6 +101,7 @@ const { title = SITE_TITLE, description, image = AboutImage } = Astro.props;
         barba.wrapper.classList.remove("is-animating");
         initHref();
         useImageVideoSwitch();
+        playOnVisible();
       });
 
       initHref();
@@ -107,18 +109,7 @@ const { title = SITE_TITLE, description, image = AboutImage } = Astro.props;
       lottieAnimationsInit();
       useProjectList();
 
-      const videos = document.querySelectorAll("video");
-      console.log(videos);
-
-      const cb = (entries: unknown) => {
-        console.log(videos);
-      };
-
-      const autoplayObserver = registerObserver(cb);
-
-      videos.forEach((video) => {
-        autoplayObserver.observe(video);
-      });
+      playOnVisible();
 
       initCursor();
     </script>

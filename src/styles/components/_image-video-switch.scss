@@ -51,6 +51,21 @@
     width: 100%;
     object-fit: cover;
   }
+
+  @media (any-hover: none) {
+    // border: 1px solid blue;
+    .image-video-switch {
+      &__image {
+        opacity: 0.75;
+      }
+
+      &__video {
+        & + .image-video-switch__image {
+          opacity: 0;
+        }
+      }
+    }
+  }
 }
 
 img.placeholder {

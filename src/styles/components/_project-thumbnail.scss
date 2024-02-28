@@ -32,6 +32,32 @@ $transition-timing: ease-in-out;
       }
     }
   }
+
+  @media (any-hover: none) {
+    [data-visible="true"] & {
+      .project-thumbnail {
+        &__body {
+          opacity: 1 !important;
+        }
+
+        &__title {
+          transform: scale(1);
+        }
+
+        &__date {
+          transform: translateY(0);
+        }
+
+        &__description {
+          transform: translateY(0);
+        }
+
+        &__separator {
+          transform: scale(1);
+        }
+      }
+    }
+  }
 }
 
 .project-thumbnail {
