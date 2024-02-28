@@ -2,12 +2,25 @@
 import HeaderLink from "../HeaderLink.astro";
 import { SITE_TITLE } from "../../consts";
 import Logo from "../ui/Logo.astro";
-// import LottieAnimation from "astro-integration-lottie/Lottie.astro";
 ---
 
 <header>
   <nav>
-    <HeaderLink href="/">{SITE_TITLE}</HeaderLink>
+    <HeaderLink href="/">
+      <span class="sr-only">
+        {SITE_TITLE}
+      </span>
+      <div
+        id="home"
+        data-lottie-data={JSON.stringify({
+          id: "home",
+          src: "/assets/animations/home.json",
+          autoplay: false,
+          loop: false,
+        })}
+      >
+      </div>
+    </HeaderLink>
     <div class="header__logo">
       <a href="/">
         <Logo class="test" />
@@ -23,7 +36,6 @@ import Logo from "../ui/Logo.astro";
               id: "info",
               src: "/assets/animations/info.json",
               autoplay: false,
-              player: "light",
               loop: false,
             })}
           >
@@ -35,70 +47,103 @@ import Logo from "../ui/Logo.astro";
 </header>
 
 <style>
-  .f {
+  #home {
+    width: 198px;
+    position: absolute;
+    top: -13px;
+    left: -14px;
+
+    @media (min-width: 45rem) {
+      width: 143px;
+      top: -5px;
+      right: -14px;
+    }
+  }
+
+  #info {
     width: 3.6em;
     position: absolute;
-    top: -5px;
-    right: 5px;
-    @media (min-width: 720px) {
-      width: 41px;
-      top: 1px;
-      right: 9px;
+    top: -0.3125rem;
+    right: 0.3125rem;
+    @media (min-width: 45rem) {
+      width: 2.5625rem;
+      top: 0.0625rem;
+      right: 0.5625rem;
     }
   }
 </style>
 
 <script>
-  import Lottie from "lottie-web";
+  import Lottie, { type AnimationItem } from "lottie-web";
 
-  const infoAnimationFrames = {
-    mouseEnter: 0,
-    click: 30,
-    mouseLeave: 60,
+  interface AnimationFrames {
+    mouseEnter: any;
+    click: any;
+    mouseLeave: any;
+  }
+
+  const animations: Record<string, AnimationFrames> = {
+    info: {
+      mouseEnter: [0, 29],
+      click: [60, 86],
+      mouseLeave: [30, 59],
+    },
+    home: {
+      mouseEnter: [0, 29],
+      click: [
+        [60, 86],
+        [30, 59],
+      ],
+      mouseLeave: [30, 59],
+    },
   };
 
-  const info = document.getElementById("info")!;
-  const infoConfig = JSON.parse(info?.getAttribute("data-lottie-data")!);
+  type AnimationId = keyof typeof animations;
+  type AnimationItemWithWrapper = AnimationItem & { wrapper: HTMLDivElement };
 
-  const animation = Lottie.loadAnimation({
-    container: info, // the dom element that will contain the animation
-    renderer: "svg",
-    loop: infoConfig.loop ?? false,
-    autoplay: infoConfig.loop ?? false,
-    path: infoConfig.src, // the path to the animation json
-    rendererSettings: {
-      viewBoxOnly: true,
-    },
-  });
-
-  const setupLottieAnimations = () => {
+  const setupLottieAnimations = (
+    animation: AnimationItemWithWrapper,
+    frames: AnimationFrames
+  ) => {
     if (animation) {
       let clicked = false;
 
       animation.wrapper.addEventListener("mouseenter", () => {
-        animation.playSegments(
-          [infoAnimationFrames.mouseLeave, infoAnimationFrames.click - 1],
-          true
-        );
+        animation.playSegments(frames.mouseEnter, true);
       });
 
       animation.wrapper.addEventListener("click", () => {
-        animation.playSegments(
-          [infoAnimationFrames.click, infoAnimationFrames.mouseLeave - 1],
-          true
-        );
+        animation.playSegments(frames.click, true);
 
         clicked = true;
       });
 
       animation.wrapper.addEventListener("mouseleave", () => {
         if (!clicked) {
-          animation.playSegments([60, 86], true);
+          animation.playSegments(frames.mouseLeave, true);
         }
         clicked = false;
       });
     }
   };
 
-  setupLottieAnimations();
+  (Object.keys(animations) as AnimationId[]).forEach(
+    (animationId: AnimationId) => {
+      const element = document.getElementById(animationId)!;
+      const infoConfig = JSON.parse(element?.getAttribute("data-lottie-data")!);
+      const frames = animations[animationId];
+
+      const animation = Lottie.loadAnimation({
+        container: element, // the dom element that will contain the animation
+        renderer: "svg",
+        loop: infoConfig.loop ?? false,
+        autoplay: infoConfig.loop ?? false,
+        path: infoConfig.src, // the path to the animation json
+        rendererSettings: {
+          viewBoxOnly: true,
+        },
+      }) as AnimationItemWithWrapper;
+      setupLottieAnimations(animation, frames);
+    }
+  );
 </script>

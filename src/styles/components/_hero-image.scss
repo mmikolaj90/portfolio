@@ -145,7 +145,7 @@
   &__info {
     position: absolute;
 
-    @include bp(small) {
+    @include bp(medium) {
       position: fixed;
     }
   }
