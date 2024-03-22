@@ -53,7 +53,6 @@ const barbaInit = () => {
           setTimeout(() => {
             data.next.container.classList.add("entering");
           }, 1);
-  
           setTimeout(() => {
             // document.body.classList.add("entering-lines");
           }, 200);
@@ -69,14 +68,12 @@ const barbaInit = () => {
       },
     ],
   });
-}
-
+};
 
 export default () => {
   return {
     barba,
     barbaInit,
-    before: barba.hooks.beforeLeave,
-    after: barba.hooks.after,
-  }
-}
+    ...barba.hooks,
+  };
+};

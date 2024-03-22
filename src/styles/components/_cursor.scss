@@ -1,46 +1,31 @@
 //  cursor
 .cursor {
+  $width: 30px;
+
   @media (any-hover: hover) {
-    width: 40px;
-    height: 40px;
+    width: $width;
+    height: $width;
     outline: 1px solid white;
     border-radius: 50%;
     position: absolute;
-    transition: all 200ms ease-out;
+    transition: all 100ms ease-out;
     pointer-events: none;
 
     z-index: 1002;
-  
     opacity: 0;
-    transition: opacity 250ms ease-in;
   }
-
 
   &.active {
     opacity: 1;
   }
 
   &.is-animating {
-    // transition-property: outline-offset, opacity;
-    // transition-duration: .25s;
-    // transition-timing-function: ease-in-out;
-
-    // border
   }
 
   &.animating-click {
     @media (any-hover: hover) {
       animation: 0.5s easeout-large ease-in;
     }
-    // &--in {
-    //   outline-offset: 0;
-    //   opacity: 1;
-    // }
-
-    // &--out {
-    //   opacity: 0;
-    //   outline-offset: 1rem;
-    // }
   }
 
   @keyframes easeout-large {
