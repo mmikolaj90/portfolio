@@ -1,4 +1,4 @@
-## 🚀 Project Structure
+# 🚀 Project Structure
 
 ```text
 ├── public/
@@ -11,3 +11,5 @@
 │           └── [blog-post-name].mdx/ _pages goes here_
 
 ```
+
+# Usage of page [docs](./docs/README.md)
