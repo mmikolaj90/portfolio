@@ -1,0 +1,38 @@
+---
+title: "Kancelaria"
+layout: "../../layouts/BaseBlogPostGrid.astro"
+description: "Visuals for Kancelaria Agnieszka Mincer"
+pubDate: "2024"
+heroImage: "@blogAssets/Kancelaria/heroImage_Kancelaria.jpg"
+heroVideo: "/assets/blog/Kancelaria/heroVideo.mp4"
+---
+
+import BaseBlogHeadTile from "/src/components/BaseBlogHeadTile.astro";
+import BaseBlogImage from "/src/components/BaseBlogImage.astro";
+import BaseBlogVideo from "/src/components/BaseBlogVideo.astro";
+
+<BaseBlogHeadTile
+  index="1"
+  title={frontmatter.title}
+  date={frontmatter.pubDate}
+  text="Visuals for Kancelaria Adwokacka Adowkat Agnieszka Mincer"
+  gridPosition="1/1/1/3"
+/>
+
+<BaseBlogImage
+  image={"/assets/blog/Kancelaria/Black_Paragraf.jpg"}
+  index={1}
+  gridPosition="1/2/1/2"
+/>
+
+<BaseBlogImage
+  image={"/assets/blog/Kancelaria/Black_Waga.jpg"}
+  index={1}
+  gridPosition="2/2/2/2"
+/>
+
+<BaseBlogImage
+  image={"/assets/blog/Kancelaria/heroVideo.mp4"}
+  index={1}
+  gridPosition="3/1/3/2"
+/>
