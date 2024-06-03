@@ -68,8 +68,6 @@ const init = () => {
   animationConfigs.forEach((config) => {
     const elements = document.querySelectorAll(`.anim--${config.id}`);
 
-    console.log(elements);
-
     if (!elements?.length) {
       console.error("No element");
       return;
