@@ -40,6 +40,21 @@ const { title = SITE_TITLE, description, image = AboutImage } = Astro.props;
     <meta name="title" content={title} />
     <meta name="description" content={description} />
 
+    <!-- Google tag (gtag.js) -->
+    <script
+      type="text/partytown"
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-3CXQ9GNB1W"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-3CXQ9GNB1W");
+    </script>
+
     <title>{title}</title>
     <!-- <ViewTransitions /> -->
 
