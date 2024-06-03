@@ -11,7 +11,7 @@ import Logo from "../ui/Logo.astro";
         {SITE_TITLE}
       </span>
       <div
-        id="home"
+        class="anim--home"
         data-lottie-data={JSON.stringify({
           id: "home",
           src: "/assets/animations/home.json",
@@ -31,7 +31,7 @@ import Logo from "../ui/Logo.astro";
         <span class="hidden"> info</span>
         <div class="f">
           <div
-            id="info"
+            class="anim--info"
             data-lottie-data={JSON.stringify({
               id: "info",
               src: "/assets/animations/info.json",
@@ -47,7 +47,7 @@ import Logo from "../ui/Logo.astro";
 </header>
 
 <style>
-  #home {
+  .anim--home {
     width: 198px;
     position: absolute;
     top: -13px;
@@ -60,7 +60,7 @@ import Logo from "../ui/Logo.astro";
     }
   }
 
-  #info {
+  .anim--info {
     width: 3.6em;
     position: absolute;
     top: -0.3125rem;
@@ -129,21 +129,25 @@ import Logo from "../ui/Logo.astro";
 
   (Object.keys(animations) as AnimationId[]).forEach(
     (animationId: AnimationId) => {
-      const element = document.getElementById(animationId)!;
-      const infoConfig = JSON.parse(element?.getAttribute("data-lottie-data")!);
-      const frames = animations[animationId];
+      const elements = document.querySelectorAll(`.anim--${animationId}`)!;
+      elements.forEach((element) => {
+        const infoConfig = JSON.parse(
+          element?.getAttribute("data-lottie-data")!
+        );
+        const frames = animations[animationId];
 
-      const animation = Lottie.loadAnimation({
-        container: element, // the dom element that will contain the animation
-        renderer: "svg",
-        loop: infoConfig.loop ?? false,
-        autoplay: infoConfig.loop ?? false,
-        path: infoConfig.src, // the path to the animation json
-        rendererSettings: {
-          viewBoxOnly: true,
-        },
-      }) as AnimationItemWithWrapper;
-      setupLottieAnimations(animation, frames);
+        const animation = Lottie.loadAnimation({
+          container: element, // the dom element that will contain the animation
+          renderer: "svg",
+          loop: infoConfig.loop ?? false,
+          autoplay: infoConfig.loop ?? false,
+          path: infoConfig.src, // the path to the animation json
+          rendererSettings: {
+            viewBoxOnly: true,
+          },
+        }) as AnimationItemWithWrapper;
+        setupLottieAnimations(animation, frames);
+      });
     }
   );
 </script>
