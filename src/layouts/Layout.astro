@@ -93,6 +93,8 @@ const { title = SITE_TITLE, description, image = AboutImage } = Astro.props;
         barbaInit,
         before: barbaBefore,
         after: barbaAfter,
+        afterLeave: barbaAfterLeave,
+        beforeEnter: barbaBeforeEnter,
       } = useBarba();
 
       const { initHref } = useHref();
@@ -111,6 +113,9 @@ const { title = SITE_TITLE, description, image = AboutImage } = Astro.props;
         });
         lottieAnimationsInit();
       });
+
+      barbaBeforeEnter(lottieAnimationsInit);
+
       barbaAfter(() => {
         barba.wrapper.classList.remove("is-animating");
         initHref();
