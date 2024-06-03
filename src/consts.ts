@@ -17,13 +17,13 @@ export const CONTACT = {
 export const SOCIAL_LINKS = [
   {
     name: "LinkedIn",
-    link: "google.com",
+    link: "https://www.linkedin.com/in/miko%C5%82aj-madejski",
     alt: "Find Me on LinkedIn",
     icon: LinkedIn,
   },
   {
     name: "ArtStation",
-    link: "google.com",
+    link: "https://www.artstation.com/mikolaj",
     alt: "Find Me on ArtStation",
     icon: ArtStation,
   },
