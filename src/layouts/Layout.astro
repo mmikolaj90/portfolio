@@ -15,6 +15,17 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title = SITE_TITLE, description, image = AboutImage } = Astro.props;
+
+// const FAVICONS = [
+//   {
+//     rel: "apple-touch-icon",
+//     sizes: [57, 60, 72, 76, 114, 120, 144, 152, 180],
+//   },
+//   {
+//     rel: "icon",
+//     sizes: [16, 192, 96, 32],
+//   },
+// ];
 ---
 
 <!doctype html>
@@ -23,8 +34,11 @@ const { title = SITE_TITLE, description, image = AboutImage } = Astro.props;
     <!-- Global Metadata -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <link rel="icon" sizes="32x32" href="/assets/icons/favicon.icon" />
     <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg" />
-    <link rel="icon" href="/path/to/favicon.ico" />
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+
     <meta name="generator" content={Astro.generator} />
 
     <!-- Font preloads -->
