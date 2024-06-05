@@ -69,7 +69,7 @@ const init = () => {
     const elements = document.querySelectorAll(`.anim--${config.id}`);
 
     if (!elements?.length) {
-      console.error("No element");
+      // console.error("No element");
       return;
     }
 
@@ -78,7 +78,7 @@ const init = () => {
         element?.getAttribute("data-lottie-data")!
       );
       if (!elementConfig) {
-        console.error("No element config");
+        // console.error("No element config");
         return;
       }
 

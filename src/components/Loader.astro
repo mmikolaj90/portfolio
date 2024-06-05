@@ -4,7 +4,8 @@
 
 <div id="loader" class="loader">
   <div
-    class="anim--logo"
+    id="logo"
+    class="anim--loader"
     data-lottie-data={JSON.stringify({
       id: "logo",
       src: "/assets/animations/loader.json",
@@ -21,21 +22,21 @@
   //   document.body.classList.add("loading");
 
   const animInit = () => {
-    const logos = document.querySelectorAll(".anim--logo")!;
+    // TODO: Check why this is not working with className
+    // const logos = Array.from(document.getElementsByClassName("anim--loader")!);
+    const logo = document.getElementById("logo")!;
 
-    logos.forEach((logo) => {
-      const logoConfig = JSON.parse(logo?.getAttribute("data-lottie-data")!);
+    const logoConfig = JSON.parse(logo?.getAttribute("data-lottie-data")!);
 
-      Lottie.loadAnimation({
-        container: logo, // the dom element that will contain the animation
-        renderer: "svg",
-        loop: logoConfig.loop ?? false,
-        autoplay: logoConfig.autoplay ?? false,
-        path: logoConfig.src, // the path to the animation json
-        rendererSettings: {
-          viewBoxOnly: true,
-        },
-      });
+    Lottie.loadAnimation({
+      container: logo, // the dom element that will contain the animation
+      renderer: "svg",
+      loop: logoConfig.loop ?? false,
+      autoplay: logoConfig.autoplay ?? false,
+      path: logoConfig.src, // the path to the animation json
+      rendererSettings: {
+        viewBoxOnly: true,
+      },
     });
   };
 
