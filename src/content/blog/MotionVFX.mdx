@@ -1,0 +1,38 @@
+---
+title: "MotionVFX"
+layout: "../../layouts/BaseBlogPostGrid.astro"
+description: "Works done for MotionVFX"
+pubDate: "2023/2024"
+heroImage: "@blogAssets/MotionVFX/heroImage_Kancelaria.jpg"
+heroVideo: "/assets/blog/MotionVFX/Gallery.m4v"
+---
+
+import BaseBlogHeadTile from "/src/components/BaseBlogHeadTile.astro";
+import BaseBlogImage from "/src/components/BaseBlogImage.astro";
+import BaseBlogVideo from "/src/components/BaseBlogVideo.astro";
+
+<BaseBlogHeadTile
+  index="1"
+  title={frontmatter.title}
+  date={frontmatter.pubDate}
+  text="I was responsible for animations"
+  gridPosition="1/1/1/3"
+/>
+
+<BaseBlogImage
+  image={"/assets/blog/MotionVFX/Infographic_1.m4v"}
+  index={1}
+  gridPosition="1/2/1/2"
+/>
+
+<BaseBlogImage
+  image={"/assets/blog/MotionVFX/Pointer_1.m4v"}
+  index={1}
+  gridPosition="2/2/2/2"
+/>
+
+<BaseBlogImage
+  image={"/assets/blog/MotionVFX/Infographic_2.m4v"}
+  index={1}
+  gridPosition="3/1/3/2"
+/>
