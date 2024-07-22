@@ -13,6 +13,8 @@ const {
   muted = true,
   loop = true,
 }: Props = Astro.props;
+
+const blogassetsDir = "/assets/blog/";
 ---
 
 <video
@@ -20,7 +22,7 @@ const {
   muted={muted}
   loop={loop}
   playsinline={playsinline}
-  src={src}
+  src={blogassetsDir + src}
   title={title}
   class={className}
   webkitPlaysinline={webkitPlaysinline}
