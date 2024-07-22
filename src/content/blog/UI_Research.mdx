@@ -4,7 +4,8 @@ layout: "../../layouts/BaseBlogPostGrid.astro"
 description: "Personal Project"
 pubDate: "2024"
 heroImage: "@blogAssets/UI_Research/heroImage_UI_Bar_01.jpg"
-heroVideo: "/assets/blog/UI_Research/UI_Bar_01_1.mp4"
+heroVideo: "UI_Research/UI_Bar_01_1.mp4"
+order: 3
 ---
 
 import BaseBlogHeadTile from "/src/components/BaseBlogHeadTile.astro";
@@ -20,12 +21,13 @@ import BaseBlogVideo from "/src/components/BaseBlogVideo.astro";
 />
 
 <BaseBlogVideo
-  src={"/assets/blog/UI_Research/UI_Bar_01_2.mp4"}
+  src="UI_Research/UI_Bar_01_2.mp4"
   index={2}
   gridPosition="1/3/1/3"
 />
 <BaseBlogVideo
-  src={"/assets/blog/UI_Research/UI_Bar_01_3.mp4"}
+  src="UI_Research/UI_Bar_01_3.mp4"
   index={2}
-  gridPosition="2/1/2/4"
+  gridPosition="2/1/3/4"
+  aspectRatio="2/1"
 />

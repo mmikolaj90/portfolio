@@ -4,18 +4,23 @@ import BaseBlogMedia from "./BaseBlogMedia.astro";
 
 export interface Props extends BaseBlogMediaProps {
   gridPosition?: string;
+  col?: string;
+  row?: string;
+  aspectRatio?: string;
 }
 
-const { gridPosition = "1 / 1 / 1 / 1", index = 0 } = Astro.props;
+const { gridPosition = "1/1/1/1", index = 0, aspectRatio } = Astro.props;
 
 const [rowStart, columnStart, rowEnd, columnEnd] = gridPosition
   .split("/")
   .map(Number);
+
+const aspectRatioComputed = aspectRatio ?? `${columnEnd - columnStart || 1}/${(rowEnd - rowStart) || 1}`
 ---
 
 <div
   class="blog__grid-tile"
-  style={`--grid-position: ${gridPosition}; --aspect-ratio: ${columnEnd - columnStart || 1}/${(rowEnd - rowStart) || 1}`}
+  style={`--grid-position: ${gridPosition}; --aspect-ratio: ${aspectRatioComputed}`}
 >
   <BaseBlogMedia index={index}>
     <slot />

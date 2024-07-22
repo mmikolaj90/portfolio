@@ -4,13 +4,15 @@ import BaseBlogGridTile from "./BaseBlogGridTile.astro";
 import { Image } from "astro:assets";
 
 interface Props extends BaseBlogGridTileProps {
-  image?: unknown;
+  src?: unknown;
   alt?: string;
 }
 
-const { gridPosition, alt, image, index } = Astro.props;
+const { gridPosition, alt, src, index, aspectRatio } = Astro.props;
+
+const blogassetsDir = "/assets/blog/";
 ---
 
-<BaseBlogGridTile gridPosition={gridPosition} index={index}>
-  <Image src={image} alt={alt ?? ""} width={500} height={500} />
+<BaseBlogGridTile gridPosition={gridPosition} index={index} aspectRatio={aspectRatio}>
+  <Image src={blogassetsDir + src} alt={alt ?? ""} width={500} height={500} />
 </BaseBlogGridTile>

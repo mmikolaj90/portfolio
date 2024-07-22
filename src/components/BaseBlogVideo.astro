@@ -8,8 +8,13 @@ interface Props extends BaseBlogGridTileProps, VideoProps {
   index?: number;
 }
 
-const { gridPosition, index, ...rest } = Astro.props;
+const { gridPosition, index, aspectRatio, ...rest } = Astro.props;
 ---
-<BaseBlogGridTile gridPosition={gridPosition} index={index}>
+
+<BaseBlogGridTile
+  gridPosition={gridPosition}
+  index={index}
+  aspectRatio={aspectRatio}
+>
   <BaseVideo {...rest} muted loop data-play-on-visible />
 </BaseBlogGridTile>
