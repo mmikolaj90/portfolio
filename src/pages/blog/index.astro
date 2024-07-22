@@ -5,9 +5,14 @@ import FormattedDate from "../../components/FormattedDate.astro";
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-);
+const formatDate = (date: string): number => {
+  const yearSeparator = "-"
+  return +date.split(yearSeparator)[0];
+};
+
+const posts = (await getCollection("blog")).sort((prev, next) => {
+  return formatDate(prev.data.pubDate.valueOf()) - formatDate(next.data.pubDate.valueOf())
+});
 ---
 
 <Layout description={SITE_DESCRIPTION}>
