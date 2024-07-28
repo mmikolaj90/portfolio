@@ -1,0 +1,51 @@
+---
+title: "Visuals for Kancelaria Adwokacka"
+layout: "../../layouts/BaseBlogPostGrid.astro"
+description: "Visuals for Kancelaria Adwokacka"
+pubDate: "2024"
+heroImage: "@blogAssets/Kancelaria/heroImage_Kancelaria.jpg"
+heroVideo: "/assets/blog/Kancelaria/heroVideo.m4v"
+---
+
+import BaseBlogHeadTile from "/src/components/BaseBlogHeadTile.astro";
+import BaseBlogImage from "/src/components/BaseBlogImage.astro";
+import BaseBlogVideo from "/src/components/BaseBlogVideo.astro";
+
+<BaseBlogHeadTile
+  index="1"
+  title={frontmatter.title}
+  date={frontmatter.pubDate}
+  text="Visuals for Kancelaria Adwokacka Adwokat Agnieszka Mincer.
+Animation of the logo and preparation of a series of icons in a consistent style. We are also responsible for preparing reels for instagram."
+  gridPosition="1/1/1/3"
+/>
+
+<BaseBlogImage
+  image={"/assets/blog/Kancelaria/Green_Waga.jpg"}
+  index={1}
+  gridPosition="1/3/1/3"
+/>
+
+<BaseBlogImage
+  image={"/assets/blog/Kancelaria/Black_Asterix.jpg"}
+  index={1}
+  gridPosition="2/1/2/1"
+/>
+
+<BaseBlogImage
+  image={"/assets/blog/Kancelaria/Black_Paragraf.jpg"}
+  index={1}
+  gridPosition="2/2/2/2"
+/>
+
+<BaseBlogImage
+  image={"/assets/blog/Kancelaria/Black_i.jpg"}
+  index={1}
+  gridPosition="2/3/2/3"
+/>
+
+<BaseBlogVideo
+  src={"/assets/blog/Kancelaria/Reel_1.mp4"}
+  index={2}
+  gridPosition="3/1/5/1"
+/>
