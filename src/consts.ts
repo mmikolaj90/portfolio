@@ -10,7 +10,7 @@ export const SITE_DESCRIPTION = "Welcome to my website!";
 export const SITE_OWNER = "Mikołaj Madejski";
 
 export const CONTACT = {
-  phone: "+48 515 307 817",
+  phone: "+48 536 523 165",
   mail: "mikolaj.madejskii@gmail.com",
 };
 
