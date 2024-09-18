@@ -20,9 +20,9 @@ const { posts } = Astro.props;
           <ProjectThumbnail
             slug={post.slug}
             title={post.data.title}
-            image={post.data.heroImage}
+            image={post.data.heroImageThumbnail || post.data.heroImage}
             video={{
-              src: post.data.heroVideo,
+              src: post.data.heroVideoThumbnail || post.data.heroVideo,
             }}
             date={post.data.pubDate}
             description={post.data.description}
