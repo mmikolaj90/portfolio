@@ -2,11 +2,9 @@
 import Footer from "../components/Footer.astro";
 import HeroImage from "../components/HeroImage.astro";
 import Layout from "../layouts/Layout.astro";
-import { CONTACT } from "../consts";
-import AboutImage from "../assets/mikolaj_madejski.jpg";
+import AboutImage from "../assets/about/about.jpg";
+import DATA from "src/consts";
 
-const description =
-  "I’m Mikołaj Madejski. Passionate creator of media. I do designs.";
 const image = {
   src: AboutImage,
   alt: "",
@@ -16,14 +14,11 @@ const image = {
 
 const currentYear = new Date().getFullYear();
 
-const infoData = {
-  display: "Hi!",
-  title: "WHO AM I?",
-  text: "I’m Mikołaj Madejski. Passionate creator of media. I do designs.",
-};
+const site = DATA.site;
+const aboutPage = DATA.pages.about;
 ---
 
-<Layout description={description}>
+<Layout description={aboutPage.description}>
   <main data-barba="container" data-barba-namespace="opacity-transition">
     <article>
       <div
@@ -36,21 +31,21 @@ const infoData = {
         </div>
         <div class="hero-image__deco">
           <div class="hero-image__text hero-image__hi display-1">
-            {infoData.display}
+            {aboutPage.header.display}
           </div>
           <div class="hero-image__content visible-large">
-            <h2 class="hero-image__title h5">{infoData.title}</h2>
+            <h2 class="hero-image__title h5">{aboutPage.header.title}</h2>
             <p class="hero-image__text">
-              {description}
+              {aboutPage.header.text}
             </p>
           </div>
           <div class="hero-image__info">
             <a
-              href={`tel:${CONTACT.phone.replaceAll(" ", "")}`}
-              class="info__phone">{CONTACT.phone}</a
+              href={`tel:${site.contact.phone.replaceAll(" ", "")}`}
+              class="info__phone">{site.contact.phone}</a
             >
-            <a href={`mailto:${CONTACT.mail}`} class="info__mail"
-              >{CONTACT.mail}</a
+            <a href={`mailto:${site.contact.mail}`} class="info__mail"
+              >{site.contact.mail}</a
             >
           </div>
         </div>
@@ -61,13 +56,13 @@ const infoData = {
           data-slide
           style="--timing-offset: 1;"
         >
-          <h2 class="hero-image__title h5">{infoData.title}</h2>
+          <h2 class="hero-image__title h5">{aboutPage.header.title}</h2>
           <p class="hero-image__text">
-            {infoData.text}
+            {aboutPage.header.text}
           </p>
         </div>
-
-        <div data-slide style="--timing-offset: 2;">
+        <slot/>
+        <!-- <div data-slide style="--timing-offset: 2;">
           <h2 class="h5">LET’S DO THE STUFF</h2>
           <p>
             As a kid, I was fascinated by the 3D graphics in “Toy Story.” This
@@ -76,7 +71,7 @@ const infoData = {
             I'm an Apple fan. I know that simplification is the most difficult process
             in design. But it makes it a lot of fun!
           </p>
-        </div>
+        </div> -->
 
         <div class="footer__wrapper" data-slide style="--timing-offset: 3;">
           <Footer />

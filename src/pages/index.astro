@@ -3,11 +3,6 @@ import { getCollection } from "astro:content";
 import ProjectList from "../components/ProjectList.astro";
 import Layout from "../layouts/Layout.astro";
 
-const formatDate = (date: string): number => {
-  const yearSeparator = "-"
-  return +date.split(yearSeparator)[0];
-};
-
 const posts = (await getCollection("blog")).sort((prev, next) => {
   return next.data.order.valueOf() - prev.data.order.valueOf()
 });

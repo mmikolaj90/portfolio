@@ -2,30 +2,24 @@
 import "../styles/index.scss";
 import Navbar from "../components/navbar/Navbar.astro";
 import Loader from "../components/Loader.astro";
-import { SITE_TITLE } from "../consts";
-import AboutImage from "../assets/mikolaj_madejski.jpg";
+import SITE_DATA from "../consts";
 
 interface Props {
   title?: string;
   description: string;
-  image?: string;
+  image?: ImageMetadata;
   navbar?: boolean;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title = SITE_TITLE, description, image = AboutImage } = Astro.props;
+const site = SITE_DATA.site
 
-// const FAVICONS = [
-//   {
-//     rel: "apple-touch-icon",
-//     sizes: [57, 60, 72, 76, 114, 120, 144, 152, 180],
-//   },
-//   {
-//     rel: "icon",
-//     sizes: [16, 192, 96, 32],
-//   },
-// ];
+const {
+  title = site.title,
+  description = site.description,
+  image = site.ogImage || SITE_DATA.pages.about.header.image,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -77,19 +71,18 @@ const { title = SITE_TITLE, description, image = AboutImage } = Astro.props;
     <meta property="og:url" content={Astro.url} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <!-- <meta property="og:image" content={new URL(image, Astro.url)} /> -->
+    <meta property="og:image" content={new URL(image.src, Astro.url)} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={Astro.url} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <!-- <meta property="twitter:image" content={new URL(image, Astro.url)} /> -->
+    <meta property="twitter:image" content={new URL(image.src, Astro.url)} />
   </head>
   <body data-barba="wrapper" class="loading">
     <Loader />
     <div class="cursor"></div>
-
     <Navbar />
     <slot />
 
@@ -119,7 +112,6 @@ const { title = SITE_TITLE, description, image = AboutImage } = Astro.props;
 
       barbaBefore(() => {
         barba.wrapper.classList.add("is-animating");
-        useProjectList();
         window.scrollTo({
           top: 0,
           left: 0,
@@ -128,7 +120,10 @@ const { title = SITE_TITLE, description, image = AboutImage } = Astro.props;
         lottieAnimationsInit();
       });
 
-      barbaBeforeEnter(lottieAnimationsInit);
+      barbaBeforeEnter(() => {
+        useProjectList();
+        lottieAnimationsInit();
+      });
 
       barbaAfter(() => {
         barba.wrapper.classList.remove("is-animating");

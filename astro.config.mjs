@@ -4,11 +4,11 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import lottie from "astro-integration-lottie";
 import partytown from '@astrojs/partytown'
-import { SITE_URL } from "./src/consts";
+import SITE_DATA from "./src/consts";
 
 // https://astro.build/config
 export default defineConfig({
-  site: SITE_URL,
+  site: SITE_DATA.site.url,
   integrations: [
     lottie(),
     mdx(),

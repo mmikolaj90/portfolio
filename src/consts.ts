@@ -1,17 +1,38 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
 import ArtStation from "./components/ui/icons/ArtStation.svg?raw";
 import LinkedIn from "./components/ui/icons/LinkedIn.svg?raw";
+import aboutImage from "./assets/about/about.jpg";
+import ogImage from "./assets/og/ogimage.jpg";
 
-export const SITE_URL = "https://madejskimedia.com";
-
-export const SITE_TITLE = "Madejski Media";
-export const SITE_DESCRIPTION = "Welcome to my website!";
-export const SITE_OWNER = "Mikołaj Madejski";
-
-export const CONTACT = {
-  phone: "+48 536 523 165",
-  mail: "mikolaj.madejskii@gmail.com",
+export default {
+  site: {
+    url: "https://madejskimedia.com",
+    owner: "Mikołaj Madejski",
+    contact: {
+      phone: "+48 536 523 165",
+      mail: "mikolaj.madejskii@gmail.com",
+    },
+    title: "Madejski Media",
+    // This is site description visible when searching for page SEO
+    description:
+      "I’m Mikołaj Madejski. Passionate creator of media. I do designs.",
+    ogImage: ogImage
+  },
+  pages: {
+    front: {
+      description:
+        "I’m Mikołaj Madejski. Passionate creator of media. I do designs.",
+    },
+    about: {
+      description:
+        "I’m Mikołaj Madejski. Passionate creator of media. I do designs.",
+      header: {
+        image: aboutImage,
+        display: "Hi!",
+        title: "WHO AM I?",
+        text: "I’m Mikołaj Madejski. Passionate creator of media. I do designs.",
+      },
+    },
+  },
 };
 
 export const SOCIAL_LINKS = [

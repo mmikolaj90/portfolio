@@ -1,0 +1,94 @@
+---
+import Footer from "../components/Footer.astro";
+import HeroImage from "../components/HeroImage.astro";
+import Layout from "../layouts/Layout.astro";
+import AboutImage from "../assets/about/about.jpg";
+import DATA from "src/consts";
+import { type CollectionEntry, getCollection } from 'astro:content';
+
+const image = {
+  src: AboutImage,
+  alt: "",
+  height: "1000",
+  class: "darken",
+};
+
+const currentYear = new Date().getFullYear();
+
+const site = DATA.site;
+const aboutPage = DATA.pages.about;
+
+const { content } =
+  Astro.props;
+---
+
+<Layout description={aboutPage.description}>
+  <main data-barba="container" data-barba-namespace="opacity-transition">
+    <article>
+      <div
+        class="hero-image__wrapper line line-top line-bottom--after"
+        data-slide
+        style="--timing-offset: 0;"
+      >
+        <div class="hero-image__container conjoined-height-grid__element">
+          <HeroImage image={image} noEvents />
+        </div>
+        <div class="hero-image__deco">
+          <div class="hero-image__text hero-image__hi display-1">
+            {aboutPage.header.display}
+          </div>
+          <div class="hero-image__content visible-large">
+            <h2 class="hero-image__title h5">{aboutPage.header.title}</h2>
+            <p class="hero-image__text">
+              {aboutPage.header.text}
+            </p>
+          </div>
+          <div class="hero-image__info">
+            <a
+              href={`tel:${site.contact.phone.replaceAll(" ", "")}`}
+              class="info__phone">{site.contact.phone}</a
+            >
+            <a href={`mailto:${site.contact.mail}`} class="info__mail"
+              >{site.contact.mail}</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="prose">
+        <div
+          class="hero-image__content visible-small"
+          data-slide
+          style="--timing-offset: 1;"
+        >
+          <h2 class="hero-image__title h5">{aboutPage.header.title}</h2>
+          <p class="hero-image__text">
+            {aboutPage.header.text}
+          </p>
+        </div>
+        <!--  -->
+        <pre>
+            {JSON.stringify(content, null ,2)}
+        </pre>
+        <!--  -->
+        <div data-slide style="--timing-offset: 2;">
+            <slot />
+        </div>
+
+        <div class="footer__wrapper" data-slide style="--timing-offset: 3;">
+          <Footer />
+        </div>
+
+        <hr data-slide style="--timing-offset: 3;" />
+
+        <div data-slide style="--timing-offset: 4;">
+            <slot name="software"></slot>
+          <br />
+          <br />
+          <small>
+            Copyright &copy; {currentYear} Madejski Media. All Rights Reserved
+          </small>
+        </div>
+      </div>
+    </article>
+  </main>
+</Layout>
