@@ -6,7 +6,7 @@ import Logo from "../ui/Logo.astro";
 
 <header>
   <nav>
-    <HeaderLink href="/">
+    <HeaderLink href="/" data-href="/">
       <span class="sr-only">
         {SITE_TITLE}
       </span>
@@ -22,8 +22,9 @@ import Logo from "../ui/Logo.astro";
       </div>
     </HeaderLink>
     <div class="header__logo">
-      <a href="/">
-        <Logo class="test" />
+      <a href="/" data-href="/">
+        <span class="hidden"> logo</span>
+        <Logo />
       </a>
     </div>
     <div class="internal-links">
@@ -96,6 +97,13 @@ import Logo from "../ui/Logo.astro";
       ],
       mouseLeave: [30, 59],
     },
+    logo_icon: {
+      mouseEnter: [0, 29],
+      click: [
+        [60, 86],
+      ],
+      mouseLeave: [30, 59],
+    },
   };
 
   type AnimationId = keyof typeof animations;
@@ -120,7 +128,7 @@ import Logo from "../ui/Logo.astro";
 
       animation.wrapper.addEventListener("mouseleave", () => {
         if (!clicked) {
-          animation.playSegments(frames.mouseLeave, true);
+        animation.playSegments(frames.mouseLeave, true);
         }
         clicked = false;
       });
