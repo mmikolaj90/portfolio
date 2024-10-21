@@ -21,10 +21,11 @@ export const SOCIAL_LINKS = [
     alt: "Find Me on LinkedIn",
     icon: LinkedIn,
   },
-  {
-    name: "ArtStation",
-    link: "https://www.artstation.com/mikolaj",
-    alt: "Find Me on ArtStation",
-    icon: ArtStation,
-  },
+  // NOTE: If needed add back
+  // {
+  //   name: "ArtStation",
+  //   link: "https://www.artstation.com/mikolaj",
+  //   alt: "Find Me on ArtStation",
+  //   icon: ArtStation,
+  // },
 ];
