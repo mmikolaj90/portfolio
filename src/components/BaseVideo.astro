@@ -2,6 +2,9 @@
 export interface Props extends HTMLVideoElement {
   type?: string;
   class?: string;
+  root?: boolean;
+  playsinline?: boolean;
+  webkitPlaysinline?: boolean;
 }
 
 const {
@@ -12,9 +15,11 @@ const {
   webkitPlaysinline = true,
   muted = true,
   loop = true,
+  type = 'mp4'
 }: Props = Astro.props;
 
 const blogassetsDir = "/assets/blog/";
+const isRoot = src.startsWith('/src')
 ---
 
 <video
@@ -22,8 +27,9 @@ const blogassetsDir = "/assets/blog/";
   muted={muted}
   loop={loop}
   playsinline={playsinline}
-  src={blogassetsDir + src}
+  src={isRoot ? src : blogassetsDir + src}
   title={title}
+  type={type}
   class={className}
   webkitPlaysinline={webkitPlaysinline}
   {...Astro.props}></video>

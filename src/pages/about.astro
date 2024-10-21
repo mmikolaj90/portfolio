@@ -4,15 +4,26 @@ import HeroImage from "../components/HeroImage.astro";
 import Layout from "../layouts/Layout.astro";
 import { CONTACT } from "../consts";
 import AboutImage from "../assets/mikolaj_madejski.jpg";
+// NOTE: Video of about put new video with this name and uncomment objects
+import AboutVideo from "../assets/about.mp4";
 
 const description =
   "I’m Mikołaj Madejski. Passionate creator of media. I do designs.";
+
 const image = {
   src: AboutImage,
-  alt: "",
+  alt: "Mikolaj Madejski",
   height: "1000",
   class: "darken",
 };
+
+// NOTE: Example of video usage
+// const video = {
+//   src: AboutVideo,
+//   title: "Mikolaj Madejski",
+//   height: 1000,
+//   class: "darket",
+// };
 
 const currentYear = new Date().getFullYear();
 
@@ -33,6 +44,8 @@ const infoData = {
       >
         <div class="hero-image__container conjoined-height-grid__element">
           <HeroImage image={image} noEvents />
+          <!-- NOTE: Example of video usage -->
+          <!-- <HeroImage video={video} noEvents /> -->
         </div>
         <div class="hero-image__deco">
           <div class="hero-image__text hero-image__hi display-1">
