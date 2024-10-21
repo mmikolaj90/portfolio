@@ -1,12 +1,13 @@
 const handleHref = () => {
   const links = Array.from(document.querySelectorAll("a"));
-  const currentHref = window.location.href;
+  const currentHref = window.location.pathname;
+  const homeHref = '/';
 
-  links.forEach((a) => {
-    if (a.href == currentHref) {
-      a.classList.add("events-disabled");
+  links.filter(link => link.dataset.href === homeHref).forEach((a) => {
+    if (currentHref === homeHref) {
+      a.href = '#'
     } else {
-      a.classList.remove("events-disabled");
+      a.href = homeHref
     }
   });
 };
