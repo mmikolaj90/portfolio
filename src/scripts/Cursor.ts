@@ -66,6 +66,22 @@ const handleCursor = () => {
   };
 
   window.requestAnimationFrame(animate);
+
+  const hideOn = document.querySelectorAll(".cursor-hide");
+
+  hideOn.forEach((element) => {
+    element.addEventListener("mouseenter", (event) => {
+      cursor.classList.add("opacity-0");
+    });
+
+    element.addEventListener("mouseleave", (event) => {
+      cursor.classList.remove("opacity-0");
+    });
+  });
+
+  return {
+    cursor,
+  };
 };
 
 export default () => {
