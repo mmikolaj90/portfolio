@@ -102,24 +102,22 @@ const { title = SITE_TITLE, description, image = AboutImage } = Astro.props;
       import useProjectList from "../scripts/ProjectList";
       import { playOnVisible } from "../scripts/utils/playOnVisible";
 
-      const {
-        barba,
-        barbaInit,
-        before: barbaBefore,
-        after: barbaAfter,
-        afterLeave: barbaAfterLeave,
-        beforeEnter: barbaBeforeEnter,
-      } = useBarba();
-
+      const { barba, barbaInit, before, after, beforeEnter } = useBarba();
       const { initHref } = useHref();
       const { initCursor } = useCursor();
       const { lottieAnimationsInit } = useHeroImage();
 
+      initHref();
+      useImageVideoSwitch();
+      lottieAnimationsInit();
+      useProjectList();
+      playOnVisible();
+      initCursor();
+
       barbaInit();
 
-      barbaBefore(() => {
+      before(() => {
         barba.wrapper.classList.add("is-animating");
-        useProjectList();
         window.scrollTo({
           top: 0,
           left: 0,
@@ -128,25 +126,17 @@ const { title = SITE_TITLE, description, image = AboutImage } = Astro.props;
         lottieAnimationsInit();
       });
 
-      barbaBeforeEnter(lottieAnimationsInit);
-
-      barbaAfter(() => {
-        barba.wrapper.classList.remove("is-animating");
-        initHref();
-        useImageVideoSwitch();
-        playOnVisible();
-        initCursor();
+      beforeEnter(() => {
+        useImageVideoSwitch(),
+          lottieAnimationsInit(),
+          useProjectList(),
+          initHref();
       });
 
-      initHref();
-      useImageVideoSwitch();
-      lottieAnimationsInit();
-      useProjectList();
-
-      playOnVisible();
-
-      initCursor();
-
+      after(() => {
+        barba.wrapper.classList.remove("is-animating");
+        playOnVisible();
+      });
     </script>
   </body>
 </html>
