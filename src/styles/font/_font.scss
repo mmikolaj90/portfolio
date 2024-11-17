@@ -19,26 +19,10 @@ h6 {
   margin: 0 0 0.5rem 0;
   color: rgb(var(--white));
   line-height: 1.2;
-  // letter-spacing: 0.0625rem;
 }
-// h1 {
-//   font-size: 3.052em;
-// }
-// h2 {
-//   font-size: 2.441em;
-// }
-// h3 {
-//   font-size: 1.953em;
-// }
-// h4 {
-//   font-size: 1.563em;
-// }
-// h5 {
-//   font-size: 1.25em;
-// }
 .h6 {
-  font-size: .875em;
-  letter-spacing: .14px;
+  font-size: 0.875em;
+  letter-spacing: 0.14px;
   font-weight: 600;
 }
 
@@ -47,19 +31,19 @@ b {
   font-weight: 700;
 }
 a {
-  // cursor: none;
   color: var(--accent);
   text-decoration: none;
 }
 a:hover {
   color: var(--accent);
 }
-p, a {
+p,
+a {
   margin: 0;
   line-height: 1.5;
   font-weight: 300;
   font-size: 14px;
-  letter-spacing: .38px;
+  letter-spacing: 0.38px;
 }
 
 .display {
@@ -85,8 +69,4 @@ p, a {
   letter-spacing: 0.14px;
   font-weight: 400;
   position: relative;
-  .active {
-    /* font-weight: bolder; */
-    /* text-decoration: underline; */
-  }
 }
