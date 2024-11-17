@@ -1,6 +1,5 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
-import ArtStation from "./components/ui/icons/ArtStation.svg?raw";
 import LinkedIn from "./components/ui/icons/LinkedIn.svg?raw";
 
 export const SITE_URL = "https://madejskimedia.com";

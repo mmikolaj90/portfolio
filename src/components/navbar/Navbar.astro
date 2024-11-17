@@ -6,7 +6,7 @@ import Logo from "../ui/Logo.astro";
 
 <header>
   <nav>
-    <HeaderLink href="/" data-href="/" class="cursor-hide">
+    <HeaderLink href="/" class="cursor-hide">
       <span class="sr-only">
         {SITE_TITLE}
       </span>
@@ -22,10 +22,10 @@ import Logo from "../ui/Logo.astro";
       </div>
     </HeaderLink>
     <div class="header__logo">
-      <a href="/" data-href="/" class="cursor-hide">
+      <HeaderLink href="/" class="cursor-hide">
         <span class="hidden"> logo</span>
         <Logo />
-      </a>
+      </HeaderLink>
     </div>
     <div class="internal-links">
       <HeaderLink href="/about" class="cursor-hide">

@@ -1,13 +1,23 @@
-const handleHref = () => {
-  const links = Array.from(document.querySelectorAll("a"));
-  const currentHref = window.location.pathname;
-  const homeHref = '/';
+interface ElementWithDatasetHref extends Element {
+  dataset: {
+    href: string;
+  };
+}
 
-  links.filter(link => link.dataset.href === homeHref).forEach((a) => {
-    if (currentHref === homeHref) {
-      a.href = '#'
-    } else {
-      a.href = homeHref
+const handleHref = () => {
+  const currentHref = window.location.pathname;
+  const links = Array.from(
+    document.querySelectorAll("nav a")
+  ) as ElementWithDatasetHref[];
+
+  const onActive = (event: Event) => {
+    event.preventDefault();
+    return;
+  };
+
+  links.forEach((link: ElementWithDatasetHref) => {
+    if (link.dataset.href === currentHref) {
+      link.addEventListener("click", onActive);
     }
   });
 };

@@ -22,11 +22,6 @@ h2 {
   font-size: 0.875rem;
   text-transform: uppercase;
   font-weight: 600;
-  a {
-    &.active {
-      text-decoration: none;
-    }
-  }
 }
 
 nav {
@@ -38,9 +33,6 @@ nav {
     display: inline-block;
     padding: 1rem;
     text-decoration: none;
-    &.active {
-      text-decoration: none;
-    }
   }
 }
 
@@ -74,8 +66,5 @@ nav {
     @media (min-width: 1920px) {
       height: calc(100vw / 4);
     }
-
-    // @include bp(desktop) {
-    // }
   }
 }
