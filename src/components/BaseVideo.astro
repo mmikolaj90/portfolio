@@ -15,11 +15,13 @@ const {
   webkitPlaysinline = true,
   muted = true,
   loop = true,
-  type = 'mp4'
+  type = "video/mp4",
 }: Props = Astro.props;
 
 const blogassetsDir = "/assets/blog/";
-const isRoot = src.startsWith('/src')
+const isRoot = src.startsWith("/src");
+
+const trueSrc = isRoot ? src : blogassetsDir + src;
 ---
 
 <video
@@ -27,9 +29,10 @@ const isRoot = src.startsWith('/src')
   muted={muted}
   loop={loop}
   playsinline={playsinline}
-  src={isRoot ? src : blogassetsDir + src}
+  src={trueSrc}
   title={title}
   type={type}
   class={className}
   webkitPlaysinline={webkitPlaysinline}
-  {...Astro.props}></video>
+  {...Astro.props}
+/>

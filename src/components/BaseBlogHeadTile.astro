@@ -19,7 +19,9 @@ const { gridPosition, title, date, text, index } = Astro.props;
         {title}
       </h1>
       <div class="date">{date}</div>
-      <p class="text">{text}</p>
+      <slot>
+        <div class="text">{text}</div>
+      </slot>
     </div>
   </div>
 </BaseBlogGridTile>
