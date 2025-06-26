@@ -62,6 +62,22 @@ Blocks have shared properties like `index`, `gridPosition`, those are controllin
 | --------- | -------- |
 |`index`| Is used for animation between pages, in this scenario its the row number|
 |`gridPosition`| Is used to position items in grid `1/1/1/1` positions mean: `row-start`/`column-start`/`row-end`/`column-end` you have pretty granular control over positioning of blocks for example you can make block span 2 columns and 3 rows starting from second row and second column like this `2/2/3/4`|
+|`style`| You can apply style in object format via css something like this: 
+```css
+style={{
+    color: 'red', //Color of text
+    background: `
+    radial-gradient(at 97% 72%, hsla(212,100%,64%,1) 0px, transparent 50%),
+    radial-gradient(at 42% 56%, hsla(36,100%,64%,1) 0px, transparent 50%),
+    radial-gradient(at 57% 36%, hsla(140,100%,64%,1) 0px, transparent 50%),
+    radial-gradient(at 15% 50%, hsla(66,100%,64%,1) 0px, transparent 50%),
+    radial-gradient(at 76% 70%, hsla(179,100%,64%,1) 0px, transparent 50%),
+    radial-gradient(at 35% 35%, hsla(218,100%,64%,1) 0px, transparent 50%),
+    radial-gradient(at 50% 90%, hsla(215,100%,64%,1) 0px, transparent 50%),
+    hsla(215,100%,64%,1)
+    ` // Background
+}}
+```
 
 ## `BaseBlogHeadTile`
 This allows you to add visible description to page

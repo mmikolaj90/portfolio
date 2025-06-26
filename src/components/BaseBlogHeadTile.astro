@@ -9,10 +9,14 @@ interface Props extends BaseBlogGridTileProps {
   index?: number;
 }
 
-const { gridPosition, title, date, text, index } = Astro.props;
+const { gridPosition, style, title, date, text, index } = Astro.props;
 ---
 
-<BaseBlogGridTile gridPosition={gridPosition} index={index}>
+<BaseBlogGridTile
+  gridPosition={gridPosition}
+  index={index}
+  style={style}
+>
   <div class="base-blog-head__tile">
     <div class="head">
       <h1 class="title display-1">
