@@ -85,18 +85,14 @@ $transition-timing: ease-in-out;
     margin: auto;
     z-index: 11;
 
+    transition: opacity $transition-time $transition-timing;
+
     @media (any-hover: hover) {
       opacity: 1;
     }
-
-    transition: opacity $transition-time $transition-timing;
   }
   &__title {
     // outline: 1px solid blue;
-    @media (any-hover: hover) {
-      transform: scale(0.9);
-      transition: transform $transition-time $transition-timing;
-    }
     // font-size: 2rem;
     margin-bottom: 1.2rem;
 
@@ -104,6 +100,11 @@ $transition-timing: ease-in-out;
     overflow: hidden;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+
+    @media (any-hover: hover) {
+      transform: scale(0.9);
+      transition: transform $transition-time $transition-timing;
+    }
   }
 
   &__date {
@@ -115,16 +116,16 @@ $transition-timing: ease-in-out;
     }
   }
   &__description {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
     // outline: 1px solid blue;
     @media (any-hover: hover) {
       transform: translateY(20px);
       transition: transform $transition-time $transition-timing;
     }
-
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
   }
 
   &__separator {

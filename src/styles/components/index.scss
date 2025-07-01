@@ -1,4 +1,5 @@
-@import "header";
+@forward "header";
+@forward "rive";
 @import "grid";
 @import "scrollbar";
 @import "loader";
