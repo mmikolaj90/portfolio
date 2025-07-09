@@ -36,7 +36,20 @@ import BaseBlogRive from "/src/components/BaseBlogRive.astro";
 </BaseBlogSubGrid>
 
 <BaseBlogSubGrid gridPosition="1/1/1/0">
-  <BaseBlogRive src="Interfaces/search-icon.riv" stateMachine="Motion" gridPosition="1/1/1/1"/>
+  <BaseBlogRive
+    const riveInstance = new rive.Rive({
+    src: "Interfaces/search-icon.riv",
+    canvas: document.getElementById("rive-canvas"),
+    autoplay: true,
+    stateMachines: "StateMachine 1",
+    onLoad: () => {
+    riveInstance.resizeDrawingSurfaceToCanvas();
+    }
+  });
+
+gridPosition="1/1/1/1"/>
+
+
 </BaseBlogSubGrid>
 
 <BaseBlogSubGrid gridPosition="1/1/1/0">
