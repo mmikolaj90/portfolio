@@ -1,7 +1,9 @@
+@use "sass:map";
+
 @import 'variables';
 
 @mixin bp($name) {
-  $val: map-get($breakpoints, $name);
+  $val: map.get($breakpoints, $name);
 
   @media (min-width: $val) {
     @content;

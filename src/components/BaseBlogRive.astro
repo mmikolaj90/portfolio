@@ -1,0 +1,23 @@
+---
+import BaseRive, { type Props as BaseRiveProps } from "./BaseRive.astro";
+import BaseBlogGridTile, {
+  type Props as BaseBlogGridTileProps,
+} from "./BaseBlogGridTile.astro";
+
+interface Props extends BaseBlogGridTileProps, BaseRiveProps {
+  index?: number;
+}
+
+const { gridPosition, index, aspectRatio, ...rest } = Astro.props;
+---
+
+<BaseBlogGridTile
+  gridPosition={gridPosition}
+  index={index}
+  aspectRatio={aspectRatio}
+  style={{
+    overflow: 'hidden',
+  }}
+>
+  <BaseRive {...rest} />
+</BaseBlogGridTile>

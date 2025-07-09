@@ -13,6 +13,9 @@ order: 5
 import BaseBlogHeadTile from "/src/components/BaseBlogHeadTile.astro";
 import BaseBlogImage from "/src/components/BaseBlogImage.astro";
 import BaseBlogVideo from "/src/components/BaseBlogVideo.astro";
+import BaseBlogSubGrid from "/src/components/BaseBlogSubGrid.astro";
+import BaseBlogRive from "/src/components/BaseBlogRive.astro";
+
 
 <BaseBlogHeadTile
   index="1"
@@ -25,6 +28,20 @@ import BaseBlogVideo from "/src/components/BaseBlogVideo.astro";
       background: `hex0E0E0E`
   }}
 />
+
+<BaseBlogSubGrid gridPosition="1/1/1/0">
+  <BaseBlogRive src="Interfaces/basket-pay-icon.riv" gridPosition="1/1/1/2"/>
+  <BaseBlogRive src="Interfaces/basket-pay-icon2.riv" gridPosition="1/2/1/2"/>
+  <BaseBlogRive src="Interfaces/pay_icon.riv" gridPosition="2/1/2/2" aspectRatio="1/1"/>
+</BaseBlogSubGrid>
+
+<BaseBlogSubGrid gridPosition="1/1/1/0">
+  <BaseBlogRive src="Interfaces/search-icon.riv" stateMachine="Motion" gridPosition="1/1/1/1"/>
+</BaseBlogSubGrid>
+
+<BaseBlogSubGrid gridPosition="1/1/1/0">
+  <BaseBlogRive src="Interfaces/settings-icon.riv" gridPosition="1/1/1/2"/>
+</BaseBlogSubGrid>
 
 <BaseBlogVideo
   src="Interfaces/interfaces-1.mp4"

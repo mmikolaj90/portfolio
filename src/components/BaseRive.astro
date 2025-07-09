@@ -1,0 +1,98 @@
+---
+import { v4 as uuidv4 } from "uuid";
+
+export interface Props {
+  src: string;
+  stateMachine?: StorageManager;
+}
+
+const { src, stateMachine }: Props = Astro.props;
+
+const blogassetsDir = "/assets/blog/";
+const isRoot = src.startsWith("/src");
+
+const trueSrc = isRoot ? src : blogassetsDir + src;
+
+console.log(trueSrc);
+---
+
+<canvas
+  class="rive-canvas"
+  data-rive-src={trueSrc}
+  data-rive-state-machines={stateMachine}
+  width="100"
+  height="100"></canvas>
+
+<script>
+  import useBarba from "../scripts/Barba";
+  const { afterLeave, afterEnter } = useBarba();
+
+  const init = () => {
+    const riveCanvases = document.querySelectorAll("[data-rive-src]");
+
+    const layout = new rive.Layout({
+      fit: rive.Fit.FitWidth, // Change to: rive.Fit.Contain, or Cover
+      alignment: rive.Alignment.Center,
+    });
+
+    return Array.from(riveCanvases).map((canvas) => {
+      const riveInstance = new rive.Rive({
+        // Load a local riv `clean_the_car.riv` or upload your own!
+        // src: "https://cdn.rive.app/animations/vehicles.riv",
+        src: canvas.dataset.riveSrc,
+        // Be sure to specify the correct state machine (or animation) name
+        stateMachines: canvas.dataset.stateMachines, // Name of the State Machine to play
+        canvas: canvas,
+        // artboard: "Artboard" // Optionally provide the artboard to display
+        layout, // This is optional. Provides additional layout control.
+        autoplay: true,
+        onLoad: () => {
+          // Prevent a blurry canvas by using the device pixel ratio
+          riveInstance.resizeDrawingSurfaceToCanvas();
+          // this.riveInstance.enableFPSCounter();
+        },
+      });
+
+      const riveInstanceWindowResizeEventListener = () => {
+        riveInstance.resizeDrawingSurfaceToCanvas();
+      };
+
+      window.addEventListener(
+        "resize",
+        riveInstanceWindowResizeEventListener,
+        false
+      );
+
+      const cleanup = () => {
+        riveInstance.cleanup();
+        window.removeEventListener(
+          "resize",
+          riveInstanceWindowResizeEventListener,
+          false
+        );
+      };
+
+      return { riveInstance, cleanup };
+    });
+  };
+
+  let riveInstances = init();
+
+  afterEnter(() => {
+    riveInstances = init();
+  });
+
+  afterLeave(() => {
+    riveInstances.forEach((instance) => {
+      instance.cleanup();
+    });
+  });
+</script>
+<script is:inline src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>
+
+<style is:global>
+  canvas-rive {
+    width: 100%;
+    height: 100%;
+  }
+</style>
