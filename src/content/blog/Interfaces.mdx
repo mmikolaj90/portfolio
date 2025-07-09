@@ -36,7 +36,25 @@ import BaseBlogRive from "/src/components/BaseBlogRive.astro";
 </BaseBlogSubGrid>
 
 <BaseBlogSubGrid gridPosition="1/1/1/0">
-  <BaseBlogRive src: "Interfaces/search-icon.riv"  stateMachines: "StateMachine 1" />
+  <BaseBlogRive 
+  
+  new rive.Rive({
+  src: "Interfaces/search-icon.riv",
+  canvas: canvas,
+  autoplay: true,
+  stateMachines: ["StateMachine 1"],
+  onLoad: (rive) => {
+    riveInstance = rive;
+    const inputs = rive.stateMachineInputs("StateMachine 1");
+    const clickInput = inputs.find(i => i.name === "Pressed");
+
+    canvas.addEventListener("click", () => {
+      clickInput.fire(); // or clickInput.value = true for booleans
+    });
+  }
+});
+
+src: "Interfaces/search-icon.riv"  stateMachines: "StateMachine 1" /> // old line code
 gridPosition="1/1/1/1"/>
 
 
