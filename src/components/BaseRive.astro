@@ -3,10 +3,10 @@ import { v4 as uuidv4 } from "uuid";
 
 export interface Props {
   src: string;
-  stateMachine?: StorageManager;
+  stateMachines?: StorageManager;
 }
 
-const { src, stateMachine }: Props = Astro.props;
+const { src, stateMachines }: Props = Astro.props;
 
 const blogassetsDir = "/assets/blog/";
 const isRoot = src.startsWith("/src");
@@ -19,9 +19,10 @@ console.log(trueSrc);
 <canvas
   class="rive-canvas"
   data-rive-src={trueSrc}
-  data-rive-state-machines={stateMachine}
+  data-rive-state-machines={stateMachines}
   width="100"
-  height="100"></canvas>
+  height="100">
+</canvas>
 
 <script>
   import useBarba from "../scripts/Barba";
@@ -41,11 +42,12 @@ console.log(trueSrc);
         // src: "https://cdn.rive.app/animations/vehicles.riv",
         src: canvas.dataset.riveSrc,
         // Be sure to specify the correct state machine (or animation) name
-        stateMachines: canvas.dataset.stateMachines, // Name of the State Machine to play
+        stateMachines: canvas.dataset.riveStateMachines, // Name of the State Machine to play
         canvas: canvas,
         // artboard: "Artboard" // Optionally provide the artboard to display
         layout, // This is optional. Provides additional layout control.
         autoplay: true,
+        automaticallyHandleEvents: true,
         onLoad: () => {
           // Prevent a blurry canvas by using the device pixel ratio
           riveInstance.resizeDrawingSurfaceToCanvas();
