@@ -44,6 +44,7 @@ console.log(trueSrc);
         // Be sure to specify the correct state machine (or animation) name
         stateMachines: canvas.dataset.riveStateMachines, // Name of the State Machine to play
         canvas: canvas,
+        isTouchScrollEnabled: true,
         // artboard: "Artboard" // Optionally provide the artboard to display
         layout, // This is optional. Provides additional layout control.
         autoplay: true,
@@ -90,7 +91,7 @@ console.log(trueSrc);
     });
   });
 </script>
-<script is:inline src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>
+<script is:inline src="https://unpkg.com/@rive-app/canvas"></script>
 
 <style is:global>
   canvas-rive {
