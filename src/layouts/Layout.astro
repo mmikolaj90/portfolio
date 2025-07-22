@@ -92,51 +92,57 @@ const { title = SITE_TITLE, description, image = AboutImage } = Astro.props;
 
     <Navbar />
     <slot />
-
-    <script>
-      import useCursor from "../scripts/Cursor";
-      import useHref from "../scripts/HandleHref";
-      import useBarba from "../scripts/Barba";
-      import useImageVideoSwitch from "../scripts/ImageVideoSwitch";
-      import useHeroImage from "../scripts/HeroImage";
-      import useProjectList from "../scripts/ProjectList";
-      import { playOnVisible } from "../scripts/utils/playOnVisible";
-
-      const { barba, barbaInit, before, after, beforeEnter } = useBarba();
-      const { initHref } = useHref();
-      const { initCursor } = useCursor();
-      const { lottieAnimationsInit } = useHeroImage();
-
-      initHref();
-      useImageVideoSwitch();
-      lottieAnimationsInit();
-      useProjectList();
-      playOnVisible();
-      initCursor();
-
-      barbaInit();
-
-      before(() => {
-        barba.wrapper.classList.add("is-animating");
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: "smooth",
-        });
-        lottieAnimationsInit();
-      });
-
-      beforeEnter(() => {
-        useImageVideoSwitch(),
-          lottieAnimationsInit(),
-          useProjectList(),
-          initHref();
-      });
-
-      after(() => {
-        barba.wrapper.classList.remove("is-animating");
-        playOnVisible();
-      });
-    </script>
   </body>
 </html>
+
+<script>
+  import useCursor from "../scripts/Cursor";
+  import useHref from "../scripts/HandleHref";
+  import useBarba from "../scripts/Barba";
+  import useImageVideoSwitch from "../scripts/ImageVideoSwitch";
+  import useHeroImage from "../scripts/HeroImage";
+  import useProjectList from "../scripts/ProjectList";
+  import { playOnVisible } from "../scripts/utils/playOnVisible";
+  import useRive from "../scripts/useRive";
+
+  const { barba, barbaInit, before, after, beforeEnter } = useBarba();
+
+  const { initHref } = useHref();
+  const { initCursor } = useCursor();
+  const { lottieAnimationsInit } = useHeroImage();
+  const { init: initRive } = useRive();
+
+  initHref();
+  useImageVideoSwitch();
+  lottieAnimationsInit();
+  useProjectList();
+  playOnVisible();
+  initCursor();
+  let riveEntries = initRive();
+
+  barbaInit();
+
+  before(() => {
+    barba.wrapper.classList.add("is-animating");
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+    lottieAnimationsInit();
+  });
+
+  beforeEnter(() => {
+    useImageVideoSwitch(), lottieAnimationsInit(), useProjectList(), initHref();
+
+    riveEntries.cleanup();
+
+    riveEntries = initRive();
+  });
+
+  after(() => {
+    barba.wrapper.classList.remove("is-animating");
+    playOnVisible();
+  });
+</script>
+<script is:inline src="https://unpkg.com/@rive-app/canvas"></script>
