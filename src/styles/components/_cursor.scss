@@ -1,6 +1,14 @@
 //  cursor
+html,
+a {
+  // cursor: none !important;
+}
+
 .cursor {
   $width: 30px;
+
+  top: var(--cursor-top);
+  left: var(--cursor-left);
 
   @media (any-hover: hover) {
     width: $width;

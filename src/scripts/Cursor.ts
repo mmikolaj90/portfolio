@@ -1,5 +1,11 @@
 const handleCursor = () => {
-  const cursor = document.querySelector(".cursor");
+  const documentRoot: HTMLElement = document.querySelector(":root")!;
+
+  const cursor = document.createElement("div");
+  cursor.classList.add("cursor");
+
+  document.body.appendChild(cursor);
+
   const cursorObject = {
     top: 0,
     left: 0,
@@ -23,25 +29,19 @@ const handleCursor = () => {
 
   const cursorSize = 20;
 
-  const updatePositionCursor = (x: number, y: number) => {
+  const updatePositionCursorRelativeToWindow = (x: number, y: number) => {
     cursorObject.left = x;
     cursorObject.top = y;
   };
 
   const tick = (x: number, y: number, offset: number = 0) => {
-    cursor?.setAttribute(
-      "style",
-      `
-      left: ${x - offset}px;
-      top: ${y - offset}px;
-      `
-    );
+    documentRoot.style.setProperty("--cursor-left", `${x - offset}px`);
+    documentRoot.style.setProperty("--cursor-top", `${y - offset}px`);
   };
 
   const updateCursor = (event: MouseEvent) => {
-    zeroWindowScrollOffsetY();
     initCursor();
-    updatePositionCursor(event.pageX, event.pageY);
+    updatePositionCursorRelativeToWindow(event.clientX, event.clientY);
   };
 
   cursor.addEventListener("animationend", (event) => {
@@ -50,13 +50,12 @@ const handleCursor = () => {
 
   window.addEventListener("mousemove", updateCursor);
 
-  // window.addEventListener("scroll", () => {
-  //   initCursor();
-  //   windowScrollOffsetY = window.scrollY;
-  // });
+  window.addEventListener("scroll", () => {
+    initCursor();
+    windowScrollOffsetY = window.scrollY;
+  });
 
-  window.addEventListener("click", (e) => {
-    zeroWindowScrollOffsetY();
+  window.addEventListener("click", () => {
     cursor.classList.add("is-animating", "animating-click");
   });
 
@@ -70,11 +69,11 @@ const handleCursor = () => {
   const hideOn = document.querySelectorAll(".cursor-hide");
 
   hideOn.forEach((element) => {
-    element.addEventListener("mouseenter", (event) => {
+    element.addEventListener("mouseenter", () => {
       cursor.classList.add("opacity-0");
     });
 
-    element.addEventListener("mouseleave", (event) => {
+    element.addEventListener("mouseleave", () => {
       cursor.classList.remove("opacity-0");
     });
   });
