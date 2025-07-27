@@ -1,13 +1,13 @@
 ---
-title: "Interfaces"
+title: "Logo"
 layout: "../../layouts/BaseBlogPostGrid.astro"
 description: "Personal Project"
-pubDate: "2024"
-heroImage: "@blogAssets/Interfaces/interfaces-heroImage.jpg"
-heroVideo: "Interfaces/interfaces-heroVideo.mp4"
-heroImageThumbnail: "@blogAssets/Interfaces/interfaces-heroImageThumbnail.jpg"
-heroVideoThumbnail: "Interfaces/interfaces-heroVideoThumbnail.mp4"
-order: 5
+pubDate: "2025"
+heroImage: "@blogAssets/Logo Website/logo-heroImage.jpg"
+heroVideo: "Logo Website/logo-heroVideo.mp4"
+heroImageThumbnail: "@blogAssets/Logo Website/logo-heroImageThumbnail.jpg"
+heroVideoThumbnail: "Logo Website/logo-heroVideoThumbnail.mp4"
+order: 9
 ---
 
 import BaseBlogHeadTile from "/src/components/BaseBlogHeadTile.astro";
@@ -20,7 +20,7 @@ import BaseBlogRive from "/src/components/BaseBlogRive.astro";
   index="1"
   title={frontmatter.title}
   date={frontmatter.pubDate}
-  text="In my spare time, I try to explore buttons and icons animation. I want the animation not to demolish the usability and only emphasize the character of the graphics."
+  text="Logo Animation."
   gridPosition="1/1/1/4"
   style={{
     color: "white",
@@ -28,33 +28,21 @@ import BaseBlogRive from "/src/components/BaseBlogRive.astro";
   }}
 />
 
-<BaseBlogVideo
-  src="Interfaces/interfaces-1.mp4"
+<BaseBlogImage
+  src="Logo Website/logo-01"
   index={2}
   gridPosition="2/1/2/1"
 />
 
-<BaseBlogVideo
-  src="Interfaces/interfaces-2.mp4"
+<BaseBlogImage
+  src="Logo Website/logo-02"
   index={2}
-  gridPosition="2/2/2/4"
+  gridPosition="2/2/2/2"
   aspectRatio="2/1"
 />
 
-<BaseBlogVideo
-  src="Interfaces/interfaces-applewatch-1.mp4"
+<BaseBlogImage
+  src="Logo Website/logo-03"
   index={2}
-  gridPosition="3/1/3/1"
-/>
-
-<BaseBlogVideo
-  src="Interfaces/interfaces-applewatch-2.mp4"
-  index={2}
-  gridPosition="3/2/3/2"
-/>
-
-<BaseBlogVideo
-  src="Interfaces/applewatch-countdown-sport.mp4"
-  index={2}
-  gridPosition="3/3/3/4"
+  gridPosition="2/3/2/4"
 />
