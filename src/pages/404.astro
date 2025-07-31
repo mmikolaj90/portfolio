@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const description =
+  "I’m Mikołaj Madejski. Passionate creator of media. I do designs.";
+---
+
+<Layout description={description}>
+  <main data-barba="container" data-barba-namespace="opacity-transition" class="page__not-found">
+    <h2 class="display-1">404</h2>
+    <p>Page not found</p>
+  </main>
+</Layout>
+
+<style lang="scss">
+    .page__not-found {
+        text-align: center;
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+
+        height: 50vh;
+    }
+</style>
